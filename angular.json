@@ -53,12 +53,18 @@
             "main": "projects/testapp/src/main.ts",
             "polyfills": "projects/testapp/src/polyfills.ts",
             "tsConfig": "projects/testapp/tsconfig.app.json",
+            "preserveSymlinks": false,
             "assets": [
               "projects/testapp/src/favicon.ico",
               "projects/testapp/src/assets"
             ],
             "styles": [
-              "projects/testapp/src/styles.css"
+              "projects/testapp/src/styles.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": []
           },
@@ -125,7 +131,12 @@
               "projects/testapp/src/assets"
             ],
             "styles": [
-              "projects/testapp/src/styles.css"
+              "projects/testapp/src/styles.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.css",
+              "node_modules/primeflex/primeflex.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": []
           }

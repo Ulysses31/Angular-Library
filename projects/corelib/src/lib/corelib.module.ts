@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
-//import { CorelibComponent } from './corelib.component';
-
-
-
+import { NgInputTextComponent } from './controls/ng-input-text/ng-input-text.component';
 @NgModule({
-  declarations: [
-    //CorelibComponent
-  ],
-  imports: [
-  ],
+  declarations: [NgInputTextComponent],
+  imports: [],
   exports: [
-    //CorelibComponent
-  ]
+    NgInputTextComponent
+  ],
 })
-export class CorelibModule { }
+export class CorelibModule {}
