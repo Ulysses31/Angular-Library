@@ -11,3 +11,4 @@ export * from './lib/services/api-service.service';
  */
 export * from './lib/controls/ng-input-text/ng-input-text.component';
 export * from './lib/controls/ng-input-search/ng-input-search.component';
+export * from './lib/controls/ng-button/ng-button.component';
