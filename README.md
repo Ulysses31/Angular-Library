@@ -1,4 +1,6 @@
-# Libtest
+# Angular Library
+
+## Angular Library with library test project using PrimeNg template controls.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
 

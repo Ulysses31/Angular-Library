@@ -1,6 +1,14 @@
 {
   "name": "libtest",
   "version": "0.0.0",
+  "author": {
+    "name": "Iordanidis Chris",
+    "email": "iordanidischr@gmail.com"
+  },
+  "description": "Angular Library with library test project using PrimeNg template controls.",
+  "repository": {
+    "url": "https://github.com/Ulysses31/Angular-Library.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
