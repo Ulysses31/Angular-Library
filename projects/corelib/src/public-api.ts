@@ -22,3 +22,6 @@ export * from './lib/controls/ng-input-switch/ng-input-switch.component';
 export * from './lib/controls/ng-input-text-area/ng-input-text-area.component';
 export * from './lib/controls/ng-input-number/ng-input-number.component';
 export * from './lib/controls/ng-listbox/ng-listbox.component';
+export * from './lib/controls/ng-input-password/ng-input-password.component';
+export * from './lib/controls/ng-input-radio/ng-input-radio.component';
+export * from './lib/controls/ng-input-select/ng-input-select.component';

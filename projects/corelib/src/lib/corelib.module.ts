@@ -14,6 +14,9 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ListboxModule } from 'primeng/listbox';
+import { PasswordModule } from 'primeng/password';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { NgCheckboxComponent } from './controls/ng-checkbox/ng-checkbox.component';
 import { NgDropdownComponent } from './controls/ng-dropdown/ng-dropdown.component';
 import { NgEditorComponent } from './controls/ng-editor/ng-editor.component';
@@ -23,6 +26,10 @@ import { NgInputSwitchComponent } from './controls/ng-input-switch/ng-input-swit
 import { NgInputTextAreaComponent } from './controls/ng-input-text-area/ng-input-text-area.component';
 import { NgInputNumberComponent } from './controls/ng-input-number/ng-input-number.component';
 import { NgListboxComponent } from './controls/ng-listbox/ng-listbox.component';
+import { NgInputPasswordComponent } from './controls/ng-input-password/ng-input-password.component';
+import { NgInputRadioComponent } from './controls/ng-input-radio/ng-input-radio.component';
+import { FormsModule } from '@angular/forms';
+import { NgInputSelectComponent } from './controls/ng-input-select/ng-input-select.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +45,13 @@ import { NgListboxComponent } from './controls/ng-listbox/ng-listbox.component';
     NgInputSwitchComponent,
     NgInputTextAreaComponent,
     NgInputNumberComponent,
-    NgListboxComponent
+    NgListboxComponent,
+    NgInputPasswordComponent,
+    NgInputRadioComponent,
+    NgInputSelectComponent
   ],
   imports: [
+    FormsModule,
     ButtonModule,
     RippleModule,
     CalendarModule,
@@ -51,7 +62,10 @@ import { NgListboxComponent } from './controls/ng-listbox/ng-listbox.component';
     InputSwitchModule,
     InputTextareaModule,
     InputNumberModule,
-    ListboxModule
+    ListboxModule,
+    PasswordModule,
+    RadioButtonModule,
+    SelectButtonModule
   ],
   exports: [
     NgInputTextComponent,
@@ -66,7 +80,10 @@ import { NgListboxComponent } from './controls/ng-listbox/ng-listbox.component';
     NgInputSwitchComponent,
     NgInputTextAreaComponent,
     NgInputNumberComponent,
-    NgListboxComponent
-  ],
+    NgListboxComponent,
+    NgInputPasswordComponent,
+    NgInputRadioComponent,
+    NgInputSelectComponent
+  ]
 })
 export class CorelibModule {}

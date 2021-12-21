@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
