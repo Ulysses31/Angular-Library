@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgInputTextComponent } from './controls/ng-input-text/ng-input-text.component';
 import { NgInputSearchComponent } from './controls/ng-input-search/ng-input-search.component';
@@ -17,6 +18,14 @@ import { ListboxModule } from 'primeng/listbox';
 import { PasswordModule } from 'primeng/password';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { TableModule } from 'primeng/table';
+import { AccordionModule } from 'primeng/accordion';
+import { CardModule } from 'primeng/card';
+import { FieldsetModule } from 'primeng/fieldset';
+import { PanelModule } from 'primeng/panel';
+import { TabViewModule } from 'primeng/tabview';
+import { ToolbarModule } from 'primeng/toolbar';
+import { SplitButtonModule } from 'primeng/splitbutton';
 import { NgCheckboxComponent } from './controls/ng-checkbox/ng-checkbox.component';
 import { NgDropdownComponent } from './controls/ng-dropdown/ng-dropdown.component';
 import { NgEditorComponent } from './controls/ng-editor/ng-editor.component';
@@ -30,6 +39,13 @@ import { NgInputPasswordComponent } from './controls/ng-input-password/ng-input-
 import { NgInputRadioComponent } from './controls/ng-input-radio/ng-input-radio.component';
 import { FormsModule } from '@angular/forms';
 import { NgInputSelectComponent } from './controls/ng-input-select/ng-input-select.component';
+import { NgTableComponent } from './controls/ng-table/ng-table.component';
+import { NgAccordionComponent } from './controls/ng-accordion/ng-accordion.component';
+import { NgCardComponent } from './controls/ng-card/ng-card.component';
+import { NgFieldsetComponent } from './controls/ng-fieldset/ng-fieldset.component';
+import { NgPanelComponent } from './controls/ng-panel/ng-panel.component';
+import { NgTabviewComponent } from './controls/ng-tabview/ng-tabview.component';
+import { NgToolbarComponent } from './controls/ng-toolbar/ng-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -48,9 +64,17 @@ import { NgInputSelectComponent } from './controls/ng-input-select/ng-input-sele
     NgListboxComponent,
     NgInputPasswordComponent,
     NgInputRadioComponent,
-    NgInputSelectComponent
+    NgInputSelectComponent,
+    NgTableComponent,
+    NgAccordionComponent,
+    NgCardComponent,
+    NgFieldsetComponent,
+    NgPanelComponent,
+    NgTabviewComponent,
+    NgToolbarComponent
   ],
   imports: [
+    CommonModule,
     FormsModule,
     ButtonModule,
     RippleModule,
@@ -65,7 +89,15 @@ import { NgInputSelectComponent } from './controls/ng-input-select/ng-input-sele
     ListboxModule,
     PasswordModule,
     RadioButtonModule,
-    SelectButtonModule
+    SelectButtonModule,
+    TableModule,
+    AccordionModule,
+    CardModule,
+    FieldsetModule,
+    PanelModule,
+    TabViewModule,
+    ToolbarModule,
+    SplitButtonModule
   ],
   exports: [
     NgInputTextComponent,
@@ -83,7 +115,14 @@ import { NgInputSelectComponent } from './controls/ng-input-select/ng-input-sele
     NgListboxComponent,
     NgInputPasswordComponent,
     NgInputRadioComponent,
-    NgInputSelectComponent
+    NgInputSelectComponent,
+    NgTableComponent,
+    NgAccordionComponent,
+    NgCardComponent,
+    NgFieldsetComponent,
+    NgPanelComponent,
+    NgTabviewComponent,
+    NgToolbarComponent
   ]
 })
 export class CorelibModule {}
