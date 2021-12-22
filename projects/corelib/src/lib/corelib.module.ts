@@ -26,6 +26,16 @@ import { PanelModule } from 'primeng/panel';
 import { TabViewModule } from 'primeng/tabview';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
+import { MenubarModule } from 'primeng/menubar';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ToastModule } from 'primeng/toast';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { NgCheckboxComponent } from './controls/ng-checkbox/ng-checkbox.component';
 import { NgDropdownComponent } from './controls/ng-dropdown/ng-dropdown.component';
 import { NgEditorComponent } from './controls/ng-editor/ng-editor.component';
@@ -46,6 +56,14 @@ import { NgFieldsetComponent } from './controls/ng-fieldset/ng-fieldset.componen
 import { NgPanelComponent } from './controls/ng-panel/ng-panel.component';
 import { NgTabviewComponent } from './controls/ng-tabview/ng-tabview.component';
 import { NgToolbarComponent } from './controls/ng-toolbar/ng-toolbar.component';
+import { NgConfirmDialogComponent } from './controls/ng-confirm-dialog/ng-confirm-dialog.component';
+import { NgDialogComponent } from './controls/ng-dialog/ng-dialog.component';
+import { NgSidebarComponent } from './controls/ng-sidebar/ng-sidebar.component';
+import { NgMenubarComponent } from './controls/ng-menubar/ng-menubar.component';
+import { NgMessagesComponent } from './controls/ng-messages/ng-messages.component';
+import { NgToastComponent } from './controls/ng-toast/ng-toast.component';
+import { NgProgressBarComponent } from './controls/ng-progress-bar/ng-progress-bar.component';
+import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-progress-spinner.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +89,15 @@ import { NgToolbarComponent } from './controls/ng-toolbar/ng-toolbar.component';
     NgFieldsetComponent,
     NgPanelComponent,
     NgTabviewComponent,
-    NgToolbarComponent
+    NgToolbarComponent,
+    NgConfirmDialogComponent,
+    NgDialogComponent,
+    NgSidebarComponent,
+    NgMenubarComponent,
+    NgMessagesComponent,
+    NgToastComponent,
+    NgProgressBarComponent,
+    NgProgressSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -97,7 +123,16 @@ import { NgToolbarComponent } from './controls/ng-toolbar/ng-toolbar.component';
     PanelModule,
     TabViewModule,
     ToolbarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    ConfirmDialogModule,
+    DialogModule,
+    SidebarModule,
+    MenubarModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule,
+    ProgressBarModule,
+    ProgressSpinnerModule
   ],
   exports: [
     NgInputTextComponent,
@@ -122,7 +157,19 @@ import { NgToolbarComponent } from './controls/ng-toolbar/ng-toolbar.component';
     NgFieldsetComponent,
     NgPanelComponent,
     NgTabviewComponent,
-    NgToolbarComponent
+    NgToolbarComponent,
+    NgConfirmDialogComponent,
+    NgDialogComponent,
+    NgSidebarComponent,
+    NgMenubarComponent,
+    NgMessagesComponent,
+    NgToastComponent,
+    NgProgressBarComponent,
+    NgProgressSpinnerComponent
+  ],
+  providers: [
+    ConfirmationService,
+    MessageService
   ]
 })
 export class CorelibModule {}
