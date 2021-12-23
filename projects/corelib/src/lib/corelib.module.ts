@@ -36,6 +36,7 @@ import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DividerModule } from 'primeng/divider';
 import { NgCheckboxComponent } from './controls/ng-checkbox/ng-checkbox.component';
 import { NgDropdownComponent } from './controls/ng-dropdown/ng-dropdown.component';
 import { NgEditorComponent } from './controls/ng-editor/ng-editor.component';
@@ -64,6 +65,7 @@ import { NgMessagesComponent } from './controls/ng-messages/ng-messages.componen
 import { NgToastComponent } from './controls/ng-toast/ng-toast.component';
 import { NgProgressBarComponent } from './controls/ng-progress-bar/ng-progress-bar.component';
 import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-progress-spinner.component';
+import { NgDividerComponent } from './controls/ng-divider/ng-divider.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,8 @@ import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-pr
     NgMessagesComponent,
     NgToastComponent,
     NgProgressBarComponent,
-    NgProgressSpinnerComponent
+    NgProgressSpinnerComponent,
+    NgDividerComponent
   ],
   imports: [
     CommonModule,
@@ -132,7 +135,8 @@ import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-pr
     MessageModule,
     ToastModule,
     ProgressBarModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    DividerModule
   ],
   exports: [
     NgInputTextComponent,
@@ -165,7 +169,8 @@ import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-pr
     NgMessagesComponent,
     NgToastComponent,
     NgProgressBarComponent,
-    NgProgressSpinnerComponent
+    NgProgressSpinnerComponent,
+    NgDividerComponent
   ],
   providers: [
     ConfirmationService,
