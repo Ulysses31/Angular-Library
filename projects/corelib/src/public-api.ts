@@ -41,3 +41,4 @@ export * from './lib/controls/ng-toast/ng-toast.component';
 export * from './lib/controls/ng-progress-bar/ng-progress-bar.component';
 export * from './lib/controls/ng-progress-spinner/ng-progress-spinner.component';
 export * from './lib/controls/ng-divider/ng-divider.component';
+export * from './lib/controls/ng-header-actions/ng-header-actions.component';

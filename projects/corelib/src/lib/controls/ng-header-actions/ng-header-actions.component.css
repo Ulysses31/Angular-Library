@@ -1,0 +1,11 @@
+.shadow {
+  box-shadow: 1px 1px 3px #e4e4e4;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}

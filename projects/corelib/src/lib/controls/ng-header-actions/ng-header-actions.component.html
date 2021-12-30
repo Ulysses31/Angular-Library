@@ -1,0 +1,16 @@
+<p-toolbar class="right shadow">
+  <ng-container *ngFor="let action of actions">
+    <lib-ng-button
+      [id]="action.id"
+      [label]="action.label"
+      [icon]="action.icon"
+      [iconPosition]="action.iconPosition"
+      [ngClass]="action.ngClass"
+      [visible]="action.visible"
+      [loadingIcon]="action.loadinIcon"
+      [loading]="action.loading"
+      [disabled]="action.disabled"
+      [command]="action.command"
+    ></lib-ng-button>
+  </ng-container>
+</p-toolbar>

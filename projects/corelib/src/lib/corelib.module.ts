@@ -66,6 +66,7 @@ import { NgToastComponent } from './controls/ng-toast/ng-toast.component';
 import { NgProgressBarComponent } from './controls/ng-progress-bar/ng-progress-bar.component';
 import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-progress-spinner.component';
 import { NgDividerComponent } from './controls/ng-divider/ng-divider.component';
+import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header-actions.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { NgDividerComponent } from './controls/ng-divider/ng-divider.component';
     NgToastComponent,
     NgProgressBarComponent,
     NgProgressSpinnerComponent,
-    NgDividerComponent
+    NgDividerComponent,
+    NgHeaderActionsComponent
   ],
   imports: [
     CommonModule,
@@ -170,7 +172,8 @@ import { NgDividerComponent } from './controls/ng-divider/ng-divider.component';
     NgToastComponent,
     NgProgressBarComponent,
     NgProgressSpinnerComponent,
-    NgDividerComponent
+    NgDividerComponent,
+    NgHeaderActionsComponent
   ],
   providers: [
     ConfirmationService,
