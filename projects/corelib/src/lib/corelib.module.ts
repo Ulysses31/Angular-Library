@@ -37,6 +37,7 @@ import { ToastModule } from 'primeng/toast';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { DividerModule } from 'primeng/divider';
+import { AgGridModule } from 'ag-grid-angular';
 import { NgCheckboxComponent } from './controls/ng-checkbox/ng-checkbox.component';
 import { NgDropdownComponent } from './controls/ng-dropdown/ng-dropdown.component';
 import { NgEditorComponent } from './controls/ng-editor/ng-editor.component';
@@ -67,6 +68,7 @@ import { NgProgressBarComponent } from './controls/ng-progress-bar/ng-progress-b
 import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-progress-spinner.component';
 import { NgDividerComponent } from './controls/ng-divider/ng-divider.component';
 import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header-actions.component';
+import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +104,8 @@ import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header
     NgProgressBarComponent,
     NgProgressSpinnerComponent,
     NgDividerComponent,
-    NgHeaderActionsComponent
+    NgHeaderActionsComponent,
+    AgPagedListComponent
   ],
   imports: [
     CommonModule,
@@ -138,7 +141,8 @@ import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header
     ToastModule,
     ProgressBarModule,
     ProgressSpinnerModule,
-    DividerModule
+    DividerModule,
+    AgGridModule.withComponents([])
   ],
   exports: [
     NgInputTextComponent,
@@ -173,7 +177,8 @@ import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header
     NgProgressBarComponent,
     NgProgressSpinnerComponent,
     NgDividerComponent,
-    NgHeaderActionsComponent
+    NgHeaderActionsComponent,
+    AgPagedListComponent
   ],
   providers: [
     ConfirmationService,

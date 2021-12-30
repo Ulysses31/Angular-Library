@@ -1,6 +1,7 @@
+import { from, Observable } from 'rxjs';
+import { ColDef } from 'ag-grid-community';
 import { NgHeaderAction } from './../../../../dist/corelib/lib/interfaces/ngHeaderAction.d';
 import { Component, OnInit } from '@angular/core';
-import { NgControl } from '@angular/forms';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -11,6 +12,13 @@ import { PrimeNGConfig } from 'primeng/api';
 export class AppComponent implements OnInit {
   title = 'CoreLib Test App';
   headerActions: NgHeaderAction[] = [];
+  rowData?: Observable<any>;
+  columnDefs: ColDef[] = [
+    { field: '', checkboxSelection: true, width: 100},
+    { field: 'make', sortable: true, filter: true },
+    { field: 'model', sortable: true, filter: true },
+    { field: 'price', sortable: true, filter: true },
+  ];
 
   constructor(private _primeNgConfig: PrimeNGConfig) {}
 
@@ -43,5 +51,18 @@ export class AppComponent implements OnInit {
         command: () => { console.log('refresh'); }
       }
     );
+
+    // Grid
+    this.loadGrid();
+  }
+
+  loadGrid(): void {
+    from([[
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxter', price: 72000 },
+    ]]).subscribe({
+      next: (data: any) => this.rowData = data
+    })
   }
 }
