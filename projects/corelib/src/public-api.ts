@@ -3,8 +3,12 @@
  */
 
 export * from './lib/corelib.module';
+export * from './lib/models/base-entity';
+export * from './lib/models/base-search-model';
 export * from './lib/interfaces/api-service';
-export * from './lib/services/api-service.service';
+export * from './lib/services/api/api-service.service';
+export * from './lib/services/viewmodel/single-viewmodel.service';
+export * from './lib/services/viewmodel/paged-list-viewmodel.service';
 
 /*
  * Components

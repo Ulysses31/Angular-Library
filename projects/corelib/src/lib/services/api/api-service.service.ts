@@ -1,4 +1,4 @@
-import { IApiService } from './../interfaces/api-service';
+import { IApiService } from '../../interfaces/api-service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
