@@ -69,6 +69,7 @@ import { NgProgressSpinnerComponent } from './controls/ng-progress-spinner/ng-pr
 import { NgDividerComponent } from './controls/ng-divider/ng-divider.component';
 import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header-actions.component';
 import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.component';
+import { NgFullSpinnerComponent } from './controls/ng-full-spinner/ng-full-spinner.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.com
     NgProgressSpinnerComponent,
     NgDividerComponent,
     NgHeaderActionsComponent,
-    AgPagedListComponent
+    AgPagedListComponent,
+    NgFullSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -178,7 +180,8 @@ import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.com
     NgProgressSpinnerComponent,
     NgDividerComponent,
     NgHeaderActionsComponent,
-    AgPagedListComponent
+    AgPagedListComponent,
+    NgFullSpinnerComponent
   ],
   providers: [
     ConfirmationService,

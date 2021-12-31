@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
-import { ColDef } from 'ag-grid-community';
+import { ColDef, GridOptions } from 'ag-grid-community';
 
 @Component({
   selector: 'ag-paged-list',
@@ -13,6 +13,7 @@ import { ColDef } from 'ag-grid-community';
       [columnDefs]="columnDefs"
       [rowSelection]="rowSelection"
       [pagination]="$any(pagination)"
+      [gridOptions]="gridOptions"
     >
     </ag-grid-angular>
   `,
@@ -23,6 +24,10 @@ export class AgPagedListComponent implements OnInit {
   @Input() columnDefs?: ColDef[];
   @Input() data$?: Observable<any>;
   @Input() pagination?: boolean = true;
+  gridOptions: GridOptions = {
+    onGridReady: (event) => event.api.sizeColumnsToFit(),
+    onGridSizeChanged: (event) => event.api.sizeColumnsToFit()
+  };
 
   constructor() {}
 

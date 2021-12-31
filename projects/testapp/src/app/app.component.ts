@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   headerActions: NgHeaderAction[] = [];
   rowData?: Observable<any>;
   columnDefs: ColDef[] = [
-    { field: '', checkboxSelection: true, width: 100},
+    { field: '', checkboxSelection: true, width: 50 },
     { field: 'make', sortable: true, filter: true },
     { field: 'model', sortable: true, filter: true },
     { field: 'price', sortable: true, filter: true },

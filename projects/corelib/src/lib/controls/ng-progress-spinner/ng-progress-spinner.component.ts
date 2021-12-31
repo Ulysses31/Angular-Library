@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ng-progress-spinner',
+  selector: 'ng-progress-spinner',
   template: ` <p-progressSpinner></p-progressSpinner> `,
   styleUrls: ['./ng-progress-spinner.component.css'],
 })
