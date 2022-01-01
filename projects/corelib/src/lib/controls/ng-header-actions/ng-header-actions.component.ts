@@ -6,7 +6,7 @@ import { NgHeaderAction } from '../../interfaces/ngHeaderAction';
   template: `
     <p-toolbar class="right shadow">
       <ng-container *ngFor="let action of actions">
-        <lib-ng-button
+        <ng-button
           [id]="action.id"
           [label]="action.label"
           [icon]="action.icon"
@@ -17,7 +17,7 @@ import { NgHeaderAction } from '../../interfaces/ngHeaderAction';
           [loading]="action.loading"
           [disabled]="action.disabled"
           [command]="action.command"
-        ></lib-ng-button>
+        ></ng-button>
       </ng-container>
     </p-toolbar>
   `,

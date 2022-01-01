@@ -48,3 +48,4 @@ export * from './lib/controls/ng-divider/ng-divider.component';
 export * from './lib/controls/ng-header-actions/ng-header-actions.component';
 export * from './lib/controls/ag-paged-list/ag-paged-list.component';
 export * from './lib/controls/ng-full-spinner/ng-full-spinner.component';
+export * from './lib/controls/ng-paged-list-full/ng-paged-list-full.component';

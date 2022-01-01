@@ -70,6 +70,7 @@ import { NgDividerComponent } from './controls/ng-divider/ng-divider.component';
 import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header-actions.component';
 import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.component';
 import { NgFullSpinnerComponent } from './controls/ng-full-spinner/ng-full-spinner.component';
+import { NgPagedListFullComponent } from './controls/ng-paged-list-full/ng-paged-list-full.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { NgFullSpinnerComponent } from './controls/ng-full-spinner/ng-full-spinn
     NgDividerComponent,
     NgHeaderActionsComponent,
     AgPagedListComponent,
-    NgFullSpinnerComponent
+    NgFullSpinnerComponent,
+    NgPagedListFullComponent
   ],
   imports: [
     CommonModule,
@@ -181,7 +183,8 @@ import { NgFullSpinnerComponent } from './controls/ng-full-spinner/ng-full-spinn
     NgDividerComponent,
     NgHeaderActionsComponent,
     AgPagedListComponent,
-    NgFullSpinnerComponent
+    NgFullSpinnerComponent,
+    NgPagedListFullComponent
   ],
   providers: [
     ConfirmationService,

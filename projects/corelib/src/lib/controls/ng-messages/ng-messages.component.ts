@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Message } from 'primeng/api';
 
 @Component({
-  selector: 'lib-ng-messages',
-  template: ` <p-messages severity="warn" [(value)]="msgs"></p-messages> `,
+  selector: 'ng-messages',
+  template: `
+    <p-messages
+      [(value)]="messages"
+    ></p-messages>
+  `,
   styleUrls: ['./ng-messages.component.css'],
 })
-export class NgMessagesComponent implements OnInit {
-  msgs: Message[] = [];
+export class NgMessagesComponent implements OnInit, OnDestroy {
+  @Input() message?: Message | any;
+  messages: Message[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.msgs.push({
-      severity: 'info',
-      summary: 'Info Message',
-      detail: 'PrimeNG rocks',
-    });
+    this.messages.push(this.message);
+  }
+
+  ngOnDestroy(): void {
+    this.messages = [];
   }
 }

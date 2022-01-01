@@ -1,0 +1,44 @@
+.headerActions,
+.gridTemplate {
+  /* border: 1px dotted #000; */
+  box-sizing: border-box;
+}
+
+.pagedListFullContainer {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagedListFullContainer .header {
+  align-self: flex-start;
+}
+
+.gridTemplate {
+  flex: 1;
+}
+
+.shadow {
+  box-shadow: 1px 1px 3px #e4e4e4;
+}
+
+ag-paged-list {
+  width: 100%;
+}
+
+.fmain {
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.headerActions {
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-start;
+}

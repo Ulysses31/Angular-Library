@@ -7,8 +7,7 @@ import { ColDef, GridOptions } from 'ag-grid-community';
   template: `
     <ag-grid-angular
       #myGgid
-      style="width: 100%; height: 500px;"
-      class="ag-theme-alpine"
+      class="ag-theme-alpine myGrid"
       [rowData]="$any(data$)"
       [columnDefs]="columnDefs"
       [rowSelection]="rowSelection"

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ng-button',
+  selector: 'ng-button',
   template: `
     <p-button
       [label]="$any(label)"

@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
       [ngClass]="{ 'm-fadeIn': isBusy, 'm-fadeOut': !isBusy }"
     >
       <ng-progress-spinner></ng-progress-spinner>
-      <p id="loading">Loading...</p>
+      <p id="loading">Please wait...</p>
     </div>
   `,
   styleUrls: ['./ng-full-spinner.component.css'],

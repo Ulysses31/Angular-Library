@@ -2,7 +2,7 @@ import { from, Observable } from 'rxjs';
 import { ColDef } from 'ag-grid-community';
 import { NgHeaderAction } from './../../../../dist/corelib/lib/interfaces/ngHeaderAction.d';
 import { Component, OnInit } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
+import { PrimeNGConfig, Message } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   title = 'CoreLib Test App';
   headerActions: NgHeaderAction[] = [];
   rowData?: Observable<any>;
+  isBusy: boolean = false;
+  message?: Message;
   columnDefs: ColDef[] = [
     { field: '', checkboxSelection: true, width: 50 },
     { field: 'make', sortable: true, filter: true },
@@ -27,22 +29,6 @@ export class AppComponent implements OnInit {
 
     this.headerActions.push(
       {
-        icon: 'pi pi-print',
-        iconPosition: 'left',
-        label: 'Print',
-        ngClass: 'p-button-raised p-button-sm p-button-success',
-        visible: true,
-        command: () => { console.log('print'); }
-      },
-      {
-        icon: 'pi pi-save',
-        iconPosition: 'left',
-        label: 'Export',
-        ngClass: 'p-button-raised p-button-sm p-button-warning',
-        visible: true,
-        command: () => { console.log('export'); }
-      },
-      {
         icon: 'pi pi-refresh',
         iconPosition: 'left',
         label: 'Refresh',
@@ -54,6 +40,13 @@ export class AppComponent implements OnInit {
 
     // Grid
     this.loadGrid();
+
+    // Message
+    this.message = {
+      severity: 'warn',
+      summary: 'Warning Message',
+      detail: 'PrimeNG rocks',
+    };
   }
 
   loadGrid(): void {

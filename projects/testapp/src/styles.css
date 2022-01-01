@@ -6,3 +6,7 @@
 @import "ag-grid-community/dist/styles/ag-theme-balham.css";
 @import "ag-grid-community/dist/styles/ag-theme-balham-dark.css";
 @import "ag-grid-community/dist/styles/ag-theme-material.css";
+
+* {
+    font-family: 'Roboto', sans-serif;
+}

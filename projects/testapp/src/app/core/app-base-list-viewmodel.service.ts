@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { NgBaseEntity, NgPagedListViewModelService } from 'corelib';
+import { NgBaseEntity, NgPagedListViewModelService } from 'projects/corelib/src/public-api';
 
 @Directive()
 export abstract class AppBaseListViewModelService<
@@ -11,6 +11,10 @@ export abstract class AppBaseListViewModelService<
 
   override ngOnInit(): void {
     super.ngOnInit();
+  }
+
+  override ngAfterViewInit(): void {
+      super.ngAfterViewInit();
   }
 
   override ngOnDestroy(): void {
