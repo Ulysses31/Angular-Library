@@ -1,4 +1,4 @@
-export interface SlBaseSearchModel {
+export interface NgBaseSearchModel {
   filters?: string;
   sorts?: string;
   page?: number;

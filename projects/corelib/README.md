@@ -24,3 +24,6 @@ Run `ng test corelib` to execute the unit tests via [Karma](https://karma-runner
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ng g c controls/ng-calendar --module corelib --skip-tests --style css --inline-template
+
+ng g m features/posts --module app --routing --route posts --dry-run
+

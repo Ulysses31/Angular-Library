@@ -1,4 +1,4 @@
-import { CorelibModule } from 'corelib';
+import { PostsModule } from './features/posts/posts.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CorelibModule,
+    PostsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
