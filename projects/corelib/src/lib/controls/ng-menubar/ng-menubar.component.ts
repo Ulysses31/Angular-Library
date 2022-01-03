@@ -2,10 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'lib-ng-menubar',
+  selector: 'ng-menubar',
   template: `
     <p-menubar [model]="items">
-      <input type="text" class="p-inputtext p-component" pInputText placeholder="Search" />
+      <ng-template pTemplate="start">
+      <img
+        id="menuImage"
+        src="https://primefaces.org/primeng/showcase/assets/showcase/images/primeng-logo-dark.svg"
+        height="30"
+        class="p-mr-2"
+      />
+      </ng-template>
+      <input
+        type="text"
+        class="p-inputtext p-component"
+        pInputText
+        placeholder="Search"
+      />
+      &nbsp;
       <button pButton label="Logout" icon="pi pi-power-off"></button>
     </p-menubar>
   `,

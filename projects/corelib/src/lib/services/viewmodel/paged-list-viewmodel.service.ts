@@ -71,6 +71,7 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
               field: header,
               sortable: true,
               filter: true,
+              resizable: true
             })
           );
         })

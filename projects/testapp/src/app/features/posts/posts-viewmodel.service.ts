@@ -11,7 +11,7 @@ export class PostsViewModelService extends AppBaseListViewModelService<PostDto> 
     private apiService: ApiService<PostDto>
   ) {
     super();
-    this.apiService.setApiServiceUrl('https://jsonplaceholder.typicode.com/postss');
+    this.apiService.setApiServiceUrl('https://jsonplaceholder.typicode.com/posts');
   }
 
   override ngOnInit(): void {

@@ -1,6 +1,9 @@
 {
   "name": "corelib",
   "version": "0.0.1",
+  "scripts": {
+    "lib": "ng build corelib --watch"
+  },
   "peerDependencies": {
     "@angular/cdk": "^13.1.1",
     "@angular/common": "^13.1.0",
