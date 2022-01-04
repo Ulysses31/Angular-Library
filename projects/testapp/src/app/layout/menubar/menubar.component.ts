@@ -8,7 +8,7 @@ import { SideMenuEntity } from 'corelib';
 })
 export class MenuBarComponent implements OnInit, AfterViewInit, OnDestroy {
   sideBarTitle: string = 'Content';
-  isVisible: boolean = true;
+  isVisible: boolean = false;
   menuItems: SideMenuEntity[] = [];
 
   constructor() {

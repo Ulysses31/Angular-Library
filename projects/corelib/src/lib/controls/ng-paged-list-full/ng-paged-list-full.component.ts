@@ -24,6 +24,11 @@ import {
             ></ng-header-actions>
           </div>
         </div>
+        <div
+          class="preTemplate"
+          [ngStyle]="{ 'display': VM.toggleModelPre ? 'block' : 'none' }">
+          <pre>{{VM.model | json}}</pre>
+        </div>
         <ng-messages *ngIf="VM.message" [message]="VM.message"></ng-messages>
         <div class="gridTemplate">
           <p-toolbar class="shadow">

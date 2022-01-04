@@ -19,6 +19,7 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   columnDefs: ColDef[] = [];
   rowData: Observable<any> | undefined;
   isBusy: boolean = false;
+  toggleModelPre: boolean = false;
 
   abstract search(searchModel: NgBaseSearchModel): Observable<TModel[]>;
   abstract getById(id: string): Observable<TModel>;
@@ -26,14 +27,24 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   constructor() {}
 
   ngOnInit(): void {
-    this.headerActions.push({
-      icon: 'pi pi-refresh',
-      iconPosition: 'left',
-      label: 'Refresh',
-      ngClass: 'p-button-raised p-button-sm p-button-info',
-      visible: true,
-      command: () => this.gridInit(),
-    });
+    this.headerActions.push(
+      {
+        icon: 'pi pi-refresh',
+        iconPosition: 'left',
+        label: 'Refresh',
+        ngClass: 'p-button-raised p-button-sm p-button-info',
+        visible: true,
+        command: () => this.gridInit(),
+      },
+      {
+        icon: 'pi pi-id-card',
+        iconPosition: 'left',
+        label: 'Model',
+        ngClass: 'p-button-raised p-button-sm p-button-danger',
+        visible: true,
+        command: () => this.toggleModelPre = !this.toggleModelPre
+      }
+    );
 
     // Init Api Call
     this.gridInit();
@@ -46,18 +57,17 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   private gridInit(): void {
     this.isBusy = true;
     this.search({})
-      .pipe(tap((data: TModel[]) => console.log(data)))
       .subscribe({
         next: (data: TModel[]) => {
           this.model = data;
           this.generateGrid(data);
         },
-        error:(err) => {
-          this.isBusy = false
+        error: (err) => {
+          this.isBusy = false;
           this.userMessage('error', err.name, err.message);
           throw err;
         },
-        complete: () => (this.isBusy = false)
+        complete: () => (this.isBusy = false),
       });
   }
 
@@ -71,7 +81,7 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
               field: header,
               sortable: true,
               filter: true,
-              resizable: true
+              resizable: true,
             })
           );
         })
@@ -80,15 +90,11 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
         next: (data: any) => {
           this.modelStruct = data && Object.getOwnPropertyNames(data[0]);
           this.rowData = data as Observable<TModel[]>;
-        }
+        },
       });
   }
 
-  private userMessage(
-    severity: string,
-    summary: string,
-    detail: string
-  ): void {
+  private userMessage(severity: string, summary: string, detail: string): void {
     this.message = {
       severity,
       summary,
