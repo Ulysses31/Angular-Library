@@ -1,25 +1,35 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {
   Component,
-  DoCheck,
   Input,
-  OnChanges,
   OnInit,
-  SimpleChanges,
   OnDestroy,
+  Output,
+  EventEmitter,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { SideMenuEntity } from '../../models/side-menu-entity';
 
 @Component({
   selector: 'ng-sidebar',
   template: `
     <p-sidebar
-      [(visible)]="display"
       position="left"
+      [(visible)]="display"
       [fullScreen]="fullScreen"
+      (onShow)="onShow()"
       (onHide)="onHide()"
-      >{{ sideBarTitle }}</p-sidebar
-    >
+      >{{ sideBarTitle }}
+      <ul *ngFor="let item of menuItems">
+        <li>
+          <a
+            [routerLink]="item.routerLink"
+            routerLinkActive="router-link-active"
+            (click)="onHide()"
+          >
+            {{item.label}}
+          </a>
+        </li>
+      </ul>
+    </p-sidebar>
   `,
   styleUrls: ['./ng-sidebar.component.css'],
 })
@@ -27,27 +37,18 @@ export class NgSidebarComponent implements OnInit, OnDestroy {
   @Input() sideBarTitle: string = '';
   @Input() display: boolean = false;
   @Input() fullScreen: boolean = false;
-  test: Subject<boolean> = new Subject<boolean>();
+  @Input() menuItems: SideMenuEntity[] = [];
+  @Output() resetVisibility: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.test.subscribe({
-      next: (data) => (this.display = data),
-    });
-  }
+  ngOnInit(): void {}
 
-  ngOnDestroy(): void {
-    this.test.unsubscribe();
-  }
+  ngOnDestroy(): void {}
+
+  onShow(): void {}
 
   onHide(): void {
-    this.display = false;
-    console.log('Hided...', this.display);
-  }
-
-  @Input() isShow(): void {
-    console.log('called from outside...');
-    this.test.next(true);
+    this.resetVisibility.emit();
   }
 }

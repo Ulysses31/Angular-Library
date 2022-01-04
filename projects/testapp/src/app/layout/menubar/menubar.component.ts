@@ -1,4 +1,5 @@
-import { Component, OnInit, AfterViewInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { SideMenuEntity } from 'corelib';
 
 @Component({
   selector: 'app-menubar',
@@ -7,24 +8,31 @@ import { Component, OnInit, AfterViewInit, EventEmitter, Output, OnDestroy } fro
 })
 export class MenuBarComponent implements OnInit, AfterViewInit, OnDestroy {
   sideBarTitle: string = 'Content';
-  isVisible: boolean | undefined;
+  isVisible: boolean = true;
+  menuItems: SideMenuEntity[] = [];
 
-  constructor() {}
+  constructor() {
+    this.menuItems= [
+      {
+        label: 'Posts',
+        routerLink: ['/posts'],
+        items: []
+      }
+    ];
+  }
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     setTimeout(() => {
       const elem = document.querySelector('#menuImage') as HTMLImageElement;
-      elem.onclick = () => {
-        this.isShow();
-      }
+      elem.onclick = () => this.isVisible = !this.isVisible;
     });
   }
 
   ngOnDestroy(): void {}
 
-  isShow(): void {
-    console.log('Clicked...');
+  resetVisibility(): void {
+    this.isVisible = false;
   }
 }

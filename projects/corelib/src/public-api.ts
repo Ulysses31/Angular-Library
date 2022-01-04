@@ -5,6 +5,7 @@
 export * from './lib/corelib.module';
 export * from './lib/models/base-entity';
 export * from './lib/models/base-search-model';
+export * from './lib/models/side-menu-entity';
 export * from './lib/interfaces/api-service';
 export * from './lib/services/api/api-service.service';
 export * from './lib/services/viewmodel/single-viewmodel.service';

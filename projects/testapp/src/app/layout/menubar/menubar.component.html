@@ -1,6 +1,9 @@
 <ng-menubar></ng-menubar>
 <ng-sidebar
   [sideBarTitle]="sideBarTitle"
-  (isShow)="isShow"
+  [fullScreen]="false"
+  [display]="isVisible"
+  (resetVisibility)="resetVisibility()"
+  [menuItems]="menuItems"
 >
 </ng-sidebar>
