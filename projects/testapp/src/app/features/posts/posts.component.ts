@@ -7,7 +7,7 @@ import { ApiService } from 'corelib';
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
-  providers: [PostsViewModelService, ApiService]
+  providers: [PostsViewModelService, ApiService],
 })
 export class PostsComponent extends AppBaseListComponent {
   constructor(public VM: PostsViewModelService) {

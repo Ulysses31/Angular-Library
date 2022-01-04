@@ -6,16 +6,6 @@ export abstract class AppBaseListViewModelService<
   TModel extends NgBaseEntity
 > extends NgPagedListViewModelService<TModel> {
 
-  // private _isBusy$ = new Subject<boolean>();
-
-  // get isBusy$(): Observable<boolean> {
-  //   return this._isBusy$.asObservable();
-  // }
-
-  // public emitIsBusy(isBusy: boolean): void {
-  //   this._isBusy$.next(isBusy);
-  // }
-
   constructor() {
     super();
   }

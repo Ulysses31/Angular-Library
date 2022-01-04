@@ -17,6 +17,31 @@ export class MenuBarComponent implements OnInit, AfterViewInit, OnDestroy {
         label: 'Posts',
         routerLink: ['/posts'],
         items: []
+      },
+      {
+        label: 'Comments',
+        routerLink: ['/comments'],
+        items: []
+      },
+      {
+        label: 'Albums',
+        routerLink: ['/albums'],
+        items: []
+      },
+      {
+        label: 'Photos',
+        routerLink: ['/photos'],
+        items: []
+      },
+      {
+        label: 'Todos',
+        routerLink: ['/todos'],
+        items: []
+      },
+      {
+        label: 'Users',
+        routerLink: ['/users'],
+        items: []
       }
     ];
   }

@@ -1,22 +1,22 @@
 import { Observable, of, tap } from 'rxjs';
 import { Injectable, Injector } from '@angular/core';
-import { PostDto } from '../../api/models/post-dto';
 import { AppBaseListViewModelService } from '../../core/app-base-list-viewmodel.service';
 import { NgBaseSearchModel } from 'projects/corelib/src/public-api';
 import { ApiService } from 'corelib';
+import { AlbumDto } from '../../api/models/album-dto';
 
 @Injectable()
-export class PostsViewModelService extends AppBaseListViewModelService<PostDto> {
-  constructor(private apiService: ApiService<PostDto>) {
+export class AlbumsViewModelService extends AppBaseListViewModelService<AlbumDto> {
+  constructor(private apiService: ApiService<AlbumDto>) {
     super();
     this.apiService.setApiServiceUrl(
-      'https://jsonplaceholder.typicode.com/posts'
+      'https://jsonplaceholder.typicode.com/albums'
     );
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.label = 'Posts';
+    this.label = 'Albums';
   }
 
   override ngAfterViewInit(): void {
@@ -27,16 +27,16 @@ export class PostsViewModelService extends AppBaseListViewModelService<PostDto> 
     super.ngOnDestroy();
   }
 
-  search(searchModel: NgBaseSearchModel): Observable<PostDto[]> {
+  search(searchModel: NgBaseSearchModel): Observable<AlbumDto[]> {
     console.log(
-      `Posts viewmodel search called...fetching ${this.apiService.getApiServiceUrl()}`
+      `Albums viewmodel search called...fetching ${this.apiService.getApiServiceUrl()}`
     );
     return this.apiService.getAll();
   }
 
-  getById(id: string): Observable<PostDto> {
+  getById(id: string): Observable<AlbumDto> {
     console.log(
-      `Posts viewmodel getById called...fetching ${this.apiService.getApiServiceUrl()}`
+      `Albums viewmodel getById called...fetching ${this.apiService.getApiServiceUrl()}`
     );
     return of({});
   }
