@@ -40,4 +40,8 @@ export class AlbumsViewModelService extends AppBaseListViewModelService<AlbumDto
     );
     return of({});
   }
+
+  editModel(selectedRow: any): void {
+    console.log(selectedRow);
+  }
 }

@@ -40,4 +40,8 @@ export class UsersViewModelService extends AppBaseListViewModelService<UserDto> 
     );
     return of({});
   }
+
+  editModel(selectedRow: any): void {
+    console.log(selectedRow);
+  }
 }

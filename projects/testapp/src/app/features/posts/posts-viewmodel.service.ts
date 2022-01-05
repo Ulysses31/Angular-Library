@@ -40,4 +40,8 @@ export class PostsViewModelService extends AppBaseListViewModelService<PostDto> 
     );
     return of({});
   }
+
+  editModel(selectedRow: any): void {
+    console.log(selectedRow);
+  }
 }

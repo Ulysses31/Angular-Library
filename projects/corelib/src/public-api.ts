@@ -7,6 +7,7 @@ export * from './lib/models/base-entity';
 export * from './lib/models/base-search-model';
 export * from './lib/models/side-menu-entity';
 export * from './lib/interfaces/api-service';
+export * from './lib/interfaces/ngHeaderAction';
 export * from './lib/services/api/api-service.service';
 export * from './lib/services/viewmodel/single-viewmodel.service';
 export * from './lib/services/viewmodel/paged-list-viewmodel.service';
@@ -14,6 +15,7 @@ export * from './lib/services/viewmodel/paged-list-viewmodel.service';
 /*
  * Components
  */
+export * from './lib/controls/ag-paged-list/ag-paged-list.component';
 export * from './lib/controls/ng-input-text/ng-input-text.component';
 export * from './lib/controls/ng-input-search/ng-input-search.component';
 export * from './lib/controls/ng-button/ng-button.component';
@@ -47,6 +49,5 @@ export * from './lib/controls/ng-progress-bar/ng-progress-bar.component';
 export * from './lib/controls/ng-progress-spinner/ng-progress-spinner.component';
 export * from './lib/controls/ng-divider/ng-divider.component';
 export * from './lib/controls/ng-header-actions/ng-header-actions.component';
-export * from './lib/controls/ag-paged-list/ag-paged-list.component';
 export * from './lib/controls/ng-full-spinner/ng-full-spinner.component';
 export * from './lib/controls/ng-paged-list-full/ng-paged-list-full.component';

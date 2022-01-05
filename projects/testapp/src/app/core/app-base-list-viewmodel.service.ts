@@ -8,6 +8,7 @@ import {
 export abstract class AppBaseListViewModelService<
   TModel extends NgBaseEntity
 > extends NgPagedListViewModelService<TModel> {
+
   constructor() {
     super();
   }

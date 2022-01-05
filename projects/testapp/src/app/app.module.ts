@@ -1,4 +1,3 @@
-import { PostsModule } from './features/posts/posts.module';
 import { MenuBarModule } from './layout/menubar/menubar.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     AppRoutingModule,
     MenuBarModule,
-    PostsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

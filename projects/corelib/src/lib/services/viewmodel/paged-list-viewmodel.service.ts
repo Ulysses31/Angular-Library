@@ -5,6 +5,7 @@ import { NgBaseEntity } from '../../models/base-entity';
 import { NgBaseSearchModel } from '../../models/base-search-model';
 import { Message } from 'primeng/api';
 import { ColDef } from 'ag-grid-community';
+import { DialogMessageEntity } from '../../models/dialog-message-entity';
 
 @Directive()
 export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
@@ -20,6 +21,11 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   rowData: Observable<any> | undefined;
   isBusy: boolean = false;
   toggleModelPre: boolean = false;
+  dialogMessageContent: DialogMessageEntity = {
+    display: false,
+    title: 'Message',
+    content: ''
+  };
 
   abstract search(searchModel: NgBaseSearchModel): Observable<TModel[]>;
   abstract getById(id: string): Observable<TModel>;

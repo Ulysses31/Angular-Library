@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CorelibModule } from 'corelib';
+import { CorelibModule, NgPagedListFullComponent } from 'corelib';
 import { CommonModule } from '@angular/common';
 
 @NgModule({

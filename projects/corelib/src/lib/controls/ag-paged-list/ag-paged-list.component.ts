@@ -6,7 +6,6 @@ import { ColDef, GridOptions } from 'ag-grid-community';
   selector: 'ag-paged-list',
   template: `
     <ag-grid-angular
-      #myGgid
       class="ag-theme-alpine myGrid"
       [rowData]="$any(data$)"
       [columnDefs]="columnDefs"
@@ -23,19 +22,20 @@ export class AgPagedListComponent implements OnInit {
   @Input() columnDefs?: ColDef[];
   @Input() data$?: Observable<any>;
   @Input() pagination?: boolean = true;
+
   gridOptions: GridOptions = {
     skipHeaderOnAutoSize: false,
     onModelUpdated: (event) => {
       event.api.sizeColumnsToFit();
-      event.columnApi.autoSizeAllColumns();
+      //event.columnApi.autoSizeAllColumns();
     },
     onGridReady: (event) => {
       event.api.sizeColumnsToFit();
-      event.columnApi.autoSizeAllColumns();
+      //event.columnApi.autoSizeAllColumns();
     },
     onGridSizeChanged: (event) => {
       event.api.sizeColumnsToFit()
-      event.columnApi.autoSizeAllColumns();
+     // event.columnApi.autoSizeAllColumns();
     }
   };
 

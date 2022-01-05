@@ -40,4 +40,8 @@ export class CommentsViewModelService extends AppBaseListViewModelService<Commen
     );
     return of({});
   }
+
+  editModel(selectedRow: any): void {
+    console.log(selectedRow);
+  }
 }

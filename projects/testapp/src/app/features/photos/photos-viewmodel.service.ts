@@ -40,4 +40,8 @@ export class PhotosViewModelService extends AppBaseListViewModelService<PhotoDto
     );
     return of({});
   }
+
+  editModel(selectedRow: any): void {
+    console.log(selectedRow);
+  }
 }

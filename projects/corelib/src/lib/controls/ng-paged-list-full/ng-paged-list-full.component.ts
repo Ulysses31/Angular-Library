@@ -8,7 +8,10 @@ import {
   OnInit,
   OnDestroy,
   AfterViewInit,
+  ViewChild,
 } from '@angular/core';
+import { AgGridAngular } from 'ag-grid-angular';
+import { Grid, GridApi } from 'ag-grid-community';
 @Component({
   selector: 'ng-paged-list-full',
   template: `
@@ -33,6 +36,7 @@ import {
         <div class="gridTemplate">
           <p-toolbar class="shadow">
             <ag-paged-list
+              #agGrid
               [columnDefs]="VM.columnDefs"
               [data$]="VM.rowData"
             ></ag-paged-list>
@@ -40,6 +44,7 @@ import {
         </div>
       </div>
       <ng-full-spinner [isBusy]="VM.isBusy"></ng-full-spinner>
+      <ng-dialog [dialogMessageContent]="VM.dialogMessageContent"></ng-dialog>
     </ng-container>
   `,
   styleUrls: ['./ng-paged-list-full.component.css'],
@@ -48,8 +53,12 @@ export class NgPagedListFullComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
   @Input() VM?: NgPagedListViewModelService<NgBaseEntity>;
+  @ViewChild('agGrid') grid!: AgGridAngular;
+  gridApi!: GridApi;
 
-  constructor() {}
+  constructor() {
+    console.log('[OnInit NgPagedListFullComponent]');
+  }
 
   ngOnInit(): void {
     this.VM?.ngOnInit();
@@ -57,6 +66,7 @@ export class NgPagedListFullComponent
 
   ngAfterViewInit(): void {
     this.VM?.ngAfterViewInit();
+    this.gridApi = this.grid.gridOptions.api!;
   }
 
   ngOnDestroy(): void {

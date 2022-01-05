@@ -40,4 +40,8 @@ export class TodosViewModelService extends AppBaseListViewModelService<TodoDto> 
     );
     return of({});
   }
+
+  editModel(selectedRow: any): void {
+    console.log(selectedRow);
+  }
 }

@@ -5,16 +5,17 @@ import {
   ViewChild,
   AfterViewInit,
 } from '@angular/core';
-import { NgPagedListFullComponent } from 'projects/corelib/src/public-api';
+import { NgPagedListFullComponent } from 'corelib';
 
 @Directive()
 export abstract class AppBaseListComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @ViewChild(NgPagedListFullComponent, { static: true })
-  baseList: NgPagedListFullComponent | undefined;
+  @ViewChild(NgPagedListFullComponent) baseList!: NgPagedListFullComponent;
 
-  constructor() {}
+  constructor() {
+    console.log('[OnInit AppBaseListComponent]');
+  }
 
   ngOnInit(): void {}
 
