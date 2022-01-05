@@ -1,19 +1,15 @@
 import {
-  NgPagedListViewModelService,
-  NgBaseEntity,
-} from 'projects/corelib/src/public-api';
-import {
+  AfterViewInit,
   Component,
   Input,
-  OnInit,
   OnDestroy,
-  AfterViewInit,
-  ViewChild,
+  OnInit,
 } from '@angular/core';
-import { AgGridAngular } from 'ag-grid-angular';
-import { GridApi } from 'ag-grid-community';
+import { NgBaseEntity } from '../../models/base-entity';
+import { NgSingleViewModelService } from '../../services/viewmodel/single-viewmodel.service';
+
 @Component({
-  selector: 'ng-paged-list-full',
+  selector: 'ng-single-full-entity',
   template: `
     <ng-container *ngIf="VM">
       <div class="pagedListFullContainer">
@@ -29,35 +25,26 @@ import { GridApi } from 'ag-grid-community';
         </div>
         <div
           class="preTemplate"
-          [ngStyle]="{ 'display': VM.toggleModelPre ? 'block' : 'none' }">
-          <pre>{{VM.model | json}}</pre>
+          [ngStyle]="{ display: VM.toggleModelPre ? 'block' : 'none' }"
+        >
+          <pre>{{ VM.model | json }}</pre>
         </div>
         <ng-messages *ngIf="VM.message" [message]="VM.message"></ng-messages>
-        <div class="gridTemplate">
-          <p-toolbar class="shadow">
-            <ag-paged-list
-              #agGrid
-              [columnDefs]="VM.columnDefs"
-              [data$]="VM.rowData"
-            ></ag-paged-list>
-          </p-toolbar>
-        </div>
+        <ng-content></ng-content>
       </div>
       <ng-full-spinner [isBusy]="VM.isBusy"></ng-full-spinner>
       <ng-dialog [dialogMessageContent]="VM.dialogMessageContent"></ng-dialog>
     </ng-container>
   `,
-  styleUrls: ['./ng-paged-list-full.component.css'],
+  styleUrls: ['./ng-single-full.component.css'],
 })
-export class NgPagedListFullComponent
+export class NgSingleFullEntityComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @Input() VM?: NgPagedListViewModelService<NgBaseEntity>;
-  @ViewChild('agGrid') grid!: AgGridAngular;
-  gridApi!: GridApi;
+  @Input() VM?: NgSingleViewModelService<NgBaseEntity>;
 
   constructor() {
-    console.log('[OnInit NgPagedListFullComponent]');
+    console.log('[OnInit NgSingleFullEntityComponent]');
   }
 
   ngOnInit(): void {
@@ -66,7 +53,6 @@ export class NgPagedListFullComponent
 
   ngAfterViewInit(): void {
     this.VM?.ngAfterViewInit();
-    this.gridApi = this.grid.gridOptions.api!;
   }
 
   ngOnDestroy(): void {

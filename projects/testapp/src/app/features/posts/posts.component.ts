@@ -4,7 +4,6 @@ import { AppBaseListComponent } from '../../core/app-base-list.component';
 import { ApiService } from 'corelib';
 
 @Component({
-  selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
   providers: [PostsViewModelService, ApiService],

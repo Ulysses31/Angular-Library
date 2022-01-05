@@ -1,9 +1,19 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { CorelibModule, NgPagedListFullComponent } from 'corelib';
+import { CorelibModule } from 'corelib';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [CommonModule, CorelibModule],
-  exports: [CorelibModule]
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    CorelibModule
+  ],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CorelibModule
+  ]
 })
 export class SharedModule {}

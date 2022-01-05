@@ -72,6 +72,7 @@ import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.com
 import { NgFullSpinnerComponent } from './controls/ng-full-spinner/ng-full-spinner.component';
 import { NgPagedListFullComponent } from './controls/ng-paged-list-full/ng-paged-list-full.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgSingleFullEntityComponent } from './controls/ng-single-full/ng-single-full.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgHeaderActionsComponent,
     AgPagedListComponent,
     NgFullSpinnerComponent,
-    NgPagedListFullComponent
+    NgPagedListFullComponent,
+    NgSingleFullEntityComponent
   ],
   imports: [
     CommonModule,
@@ -186,7 +188,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgHeaderActionsComponent,
     AgPagedListComponent,
     NgFullSpinnerComponent,
-    NgPagedListFullComponent
+    NgPagedListFullComponent,
+    NgSingleFullEntityComponent
   ],
   providers: [
     ConfirmationService,
