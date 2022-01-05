@@ -1,0 +1,29 @@
+p-sidebar ul {
+  margin: 20px 0 0 -45px;
+  overflow: hidden;
+}
+
+p-sidebar ul li {
+  list-style: none;
+}
+
+p-sidebar ul li a {
+  background-color: #f8f8f8;
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  margin: 5px;
+  width: 100%;
+  transition: margin .3s;
+}
+
+p-sidebar ul li a:hover {
+  background-color: #e4e3e3;
+  margin-left: 35px;
+  transition: all .3s;
+}
+
+.active {
+  background-color: #e4e3e3 !important;
+}
+

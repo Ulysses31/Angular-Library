@@ -18,11 +18,11 @@ import { SideMenuEntity } from '../../models/side-menu-entity';
       (onShow)="onShow()"
       (onHide)="onHide()"
       >{{ sideBarTitle }}
-      <ul *ngFor="let item of menuItems">
-        <li>
+      <ul>
+        <li *ngFor="let item of menuItems">
           <a
             [routerLink]="item.routerLink"
-            routerLinkActive="router-link-active"
+            routerLinkActive="active"
             (click)="onHide()"
           >
             {{item.label}}

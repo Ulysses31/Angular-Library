@@ -24,8 +24,19 @@ export class AgPagedListComponent implements OnInit {
   @Input() data$?: Observable<any>;
   @Input() pagination?: boolean = true;
   gridOptions: GridOptions = {
-    onGridReady: (event) => event.api.sizeColumnsToFit(),
-    onGridSizeChanged: (event) => event.api.sizeColumnsToFit()
+    skipHeaderOnAutoSize: false,
+    onModelUpdated: (event) => {
+      event.api.sizeColumnsToFit();
+      event.columnApi.autoSizeAllColumns();
+    },
+    onGridReady: (event) => {
+      event.api.sizeColumnsToFit();
+      event.columnApi.autoSizeAllColumns();
+    },
+    onGridSizeChanged: (event) => {
+      event.api.sizeColumnsToFit()
+      event.columnApi.autoSizeAllColumns();
+    }
   };
 
   constructor() {}
