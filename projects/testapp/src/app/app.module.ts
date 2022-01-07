@@ -1,3 +1,4 @@
+import { ApiService } from 'corelib';
 import { MenuBarModule } from './layout/menubar/menubar.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';

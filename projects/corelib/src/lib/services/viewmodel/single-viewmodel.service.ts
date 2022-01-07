@@ -1,5 +1,13 @@
-import { Directive, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
+import {
+  Directive,
+  OnDestroy,
+  OnInit,
+  AfterViewInit,
+  Injector,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'primeng/api';
+import { Observable, tap, switchMap } from 'rxjs';
 import { NgHeaderAction } from '../../interfaces/ngHeaderAction';
 import { NgBaseEntity } from '../../models/base-entity';
 import { DialogMessageEntity } from '../../models/dialog-message-entity';
@@ -14,36 +22,95 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
   isBusy: boolean = false;
   headerActions: NgHeaderAction[] = [];
   toggleModelPre: boolean = false;
+  backUrl: string | undefined;
   dialogMessageContent: DialogMessageEntity = {
     display: false,
     title: 'Message',
-    content: ''
+    content: '',
   };
 
-  constructor() {}
+  abstract getById(id: string): Observable<TModel>;
+
+  protected route: ActivatedRoute;
+  protected router: Router;
+
+  constructor(public injector: Injector) {
+    this.route = injector.get<ActivatedRoute>(ActivatedRoute);
+    this.router = injector.get<Router>(Router);
+  }
 
   ngOnInit(): void {
+    this.backUrl = decodeURIComponent(this.route.snapshot.queryParams['backUrl']);
     this.headerActions.push(
       {
+        id: 'back',
+        icon: 'pi pi-arrow-circle-left',
+        iconPosition: 'left',
+        label: 'Back',
+        ngClass: 'p-button-raised p-button-sm p-button-warning',
+        visible: true,
+        command: () => this.router.navigate([this.backUrl])
+      },
+      {
+        id: 'save',
+        icon: 'pi pi-save',
+        iconPosition: 'left',
+        label: 'Save',
+        ngClass: 'p-button-raised p-button-sm p-button-success',
+        visible: true,
+        command: () => console.log('Save...')
+      },
+      {
+        id: 'refresh',
         icon: 'pi pi-refresh',
         iconPosition: 'left',
         label: 'Refresh',
         ngClass: 'p-button-raised p-button-sm p-button-info',
         visible: true,
-        command: () => console.log('refresh model')
+        command: () => this.getModel(),
       },
       {
+        id: 'model',
         icon: 'pi pi-id-card',
         iconPosition: 'left',
         label: 'Model',
         ngClass: 'p-button-raised p-button-sm p-button-danger',
         visible: true,
-        command: () => this.toggleModelPre = !this.toggleModelPre
+        command: () => (this.toggleModelPre = !this.toggleModelPre),
       }
     );
+
+    // get the model
+    this.getModel();
   }
 
   ngAfterViewInit(): void {}
 
   ngOnDestroy(): void {}
+
+  private getModel(): void {
+    this.isBusy = true;
+    this.route.params.pipe(
+      switchMap(({ id }) => this.getById(id))).subscribe({
+      next: (data: TModel) => {
+        console.log(data);
+        this.isBusy = false;
+        this.model = data;
+      },
+      error: (err) => {
+        this.isBusy = false;
+        this.userMessage('error', err.name, err.message);
+        throw err;
+      },
+      complete: () => (this.isBusy = false),
+    });
+  }
+
+  private userMessage(severity: string, summary: string, detail: string): void {
+    this.message = {
+      severity,
+      summary,
+      detail,
+    };
+  }
 }

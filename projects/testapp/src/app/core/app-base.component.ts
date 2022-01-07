@@ -2,7 +2,8 @@ import { AfterViewInit, Directive, OnDestroy, OnInit, ViewChild } from '@angular
 import { NgSingleFullEntityComponent } from 'projects/corelib/src/public-api';
 @Directive()
 export abstract class AppBaseComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild(NgSingleFullEntityComponent, { static: true }) singleEntity!: NgSingleFullEntityComponent;
+  @ViewChild(NgSingleFullEntityComponent, { static: true })
+    singleEntity!: NgSingleFullEntityComponent;
 
   constructor() {
     console.log('[OnInit AppBaseComponent]');

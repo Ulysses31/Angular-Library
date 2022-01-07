@@ -15,7 +15,7 @@ import { NgSingleViewModelService } from '../../services/viewmodel/single-viewmo
       <div class="pagedListFullContainer">
         <div class="fmain">
           <div class="header">
-            <h1>{{ VM.label }}</h1>
+            <h1>{{ VM.label }} (id: {{ VM.model && VM.model.id }})</h1>
           </div>
           <div class="headerActions">
             <ng-header-actions
@@ -29,8 +29,10 @@ import { NgSingleViewModelService } from '../../services/viewmodel/single-viewmo
         >
           <pre>{{ VM.model | json }}</pre>
         </div>
-        <ng-messages *ngIf="VM.message" [message]="VM.message"></ng-messages>
-        <ng-content></ng-content>
+        <ng-messages *ngIf="VM.message" [message]="VM.message"> </ng-messages>
+        <p-panel class="shadow">
+          <ng-content></ng-content>
+        </p-panel>
       </div>
       <ng-full-spinner [isBusy]="VM.isBusy"></ng-full-spinner>
       <ng-dialog [dialogMessageContent]="VM.dialogMessageContent"></ng-dialog>

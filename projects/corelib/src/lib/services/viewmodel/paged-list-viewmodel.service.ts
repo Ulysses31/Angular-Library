@@ -35,6 +35,7 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   ngOnInit(): void {
     this.headerActions.push(
       {
+        id: 'refresh',
         icon: 'pi pi-refresh',
         iconPosition: 'left',
         label: 'Refresh',
@@ -43,6 +44,7 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
         command: () => this.gridInit(),
       },
       {
+        id: 'model',
         icon: 'pi pi-id-card',
         iconPosition: 'left',
         label: 'Model',

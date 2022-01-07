@@ -1,13 +1,17 @@
+import { ApiService, NgBaseSearchModel } from 'corelib';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { PostDto } from '../../api/models/post-dto';
 import { AppBaseListViewModelService } from '../../core/app-base-list-viewmodel.service';
-import { NgBaseSearchModel } from 'projects/corelib/src/public-api';
-import { ApiService } from 'corelib';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PostsViewModelService extends AppBaseListViewModelService<PostDto> {
-  constructor(private apiService: ApiService<PostDto>) {
+
+  constructor(
+    private apiService: ApiService<PostDto>,
+    private router: Router
+  ) {
     super();
     this.apiService.setApiServiceUrl(
       'https://jsonplaceholder.typicode.com/posts'
@@ -41,7 +45,11 @@ export class PostsViewModelService extends AppBaseListViewModelService<PostDto> 
     return of({});
   }
 
-  editModel(selectedRow: any): void {
+  editModel(selectedRow: PostDto): void {
     console.log(selectedRow);
+    this.router.navigate(
+      ['posts/edit', selectedRow.id],
+      { queryParams: { backUrl: this.router.url } }
+    );
   }
 }

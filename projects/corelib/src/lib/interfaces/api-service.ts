@@ -27,7 +27,7 @@ export interface IApiService<TModel> {
    * @param id number
    * @returns Observable<T>
    */
-  getById(id: number): Observable<TModel>;
+  getById(id: string): Observable<TModel>;
 
   /**
    * @description Insert new T

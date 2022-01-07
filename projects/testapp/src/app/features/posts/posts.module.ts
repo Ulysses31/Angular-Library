@@ -5,6 +5,6 @@ import { SharedModule } from '../../shared.module';
 import { PostsFormComponent } from './posts-form/posts-form.component';
 @NgModule({
   declarations: [PostsComponent, PostsFormComponent],
-  imports: [SharedModule, PostsRoutingModule],
+  imports: [SharedModule, PostsRoutingModule]
 })
 export class PostsModule {}

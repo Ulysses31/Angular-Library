@@ -27,7 +27,7 @@ export class ApiService<TModel> implements IApiService<TModel> {
     return this.http.get<TModel[]>(this.apiServiceUrl, this.httpOptions);
   }
 
-  getById(id: number): Observable<TModel> {
+  getById(id: string): Observable<TModel> {
     return this.http.get<TModel>(
       `${this.apiServiceUrl}/${id}`,
       this.httpOptions

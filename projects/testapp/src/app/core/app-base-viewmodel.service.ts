@@ -1,13 +1,14 @@
-import { Directive, AfterViewInit } from '@angular/core';
-import { NgBaseEntity } from 'corelib';
-import { NgSingleViewModelService } from 'projects/corelib/src/public-api';
+import { Directive, Injector } from '@angular/core';
+import { NgSingleViewModelService, NgBaseEntity } from 'corelib';
 
 @Directive()
 export abstract class AppBaseViewModelService<
   TModel extends NgBaseEntity
 > extends NgSingleViewModelService<TModel> {
-  constructor() {
-    super();
+  constructor(
+    public override injector: Injector
+  ) {
+    super(injector);
   }
 
   override ngOnInit(): void {
