@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'primeng/api';
-import { Observable, tap, switchMap } from 'rxjs';
+import { Observable, tap, switchMap, of, iif, finalize } from 'rxjs';
 import { NgHeaderAction } from '../../interfaces/ngHeaderAction';
 import { NgBaseEntity } from '../../models/base-entity';
 import { DialogMessageEntity } from '../../models/dialog-message-entity';
@@ -16,7 +16,8 @@ import { DialogMessageEntity } from '../../models/dialog-message-entity';
 export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
   implements OnInit, AfterViewInit, OnDestroy
 {
-  model?: TModel;
+  model?: TModel | undefined;
+  isNew: boolean | undefined;
   label: string | undefined;
   message: Message | undefined;
   isBusy: boolean = false;
@@ -33,6 +34,10 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
 
   protected route: ActivatedRoute;
   protected router: Router;
+
+  protected abstract resetCb: (item: TModel) => Observable<TModel>;
+  protected abstract postCb: (item: TModel) => Observable<TModel>;
+  protected abstract putCb: (id: string, item: TModel) => Observable<TModel>;
 
   constructor(public injector: Injector) {
     this.route = injector.get<ActivatedRoute>(ActivatedRoute);
@@ -52,13 +57,22 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
         command: () => this.router.navigate([this.backUrl])
       },
       {
+        id: 'new',
+        icon: 'pi pi-plus',
+        iconPosition: 'left',
+        label: 'New',
+        ngClass: 'p-button-raised p-button-sm p-button-success',
+        visible: true,
+        command: () => this.performReset()
+      },
+      {
         id: 'save',
         icon: 'pi pi-save',
         iconPosition: 'left',
         label: 'Save',
         ngClass: 'p-button-raised p-button-sm p-button-success',
         visible: true,
-        command: () => console.log('Save...')
+        command: () => this.performSave()
       },
       {
         id: 'refresh',
@@ -104,6 +118,45 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
       },
       complete: () => (this.isBusy = false),
     });
+  }
+
+  private performReset(): void {
+    console.log('performReset');
+    of(null).pipe(
+      switchMap(() => this.resetCb(this.model!))
+    ).subscribe({
+      next: (data: TModel) => this.model = data
+    })
+  }
+
+  private performSave(): void {
+    if(this.model?.id === '0') {
+      this.postCb(this.model).subscribe({
+        next: () => this.handleSuccessInsert(),
+        error: (err) => console.log(err)
+      })
+    } else {
+      this.putCb(this.model?.id!, this.model!).subscribe({
+        next: () => this.handleSuccessUpdate(),
+        error: (err) => console.log(err)
+      })
+    }
+  }
+
+  private handleSuccessInsert(): void {
+    this.dialogMessageContent = {
+      display: true,
+      title: 'Success',
+      content: 'Successfully inserted.'
+    };
+  }
+
+  private handleSuccessUpdate(): void {
+    this.dialogMessageContent = {
+      display: true,
+      title: 'Success',
+      content: 'Successfully updated.'
+    };
   }
 
   private userMessage(severity: string, summary: string, detail: string): void {

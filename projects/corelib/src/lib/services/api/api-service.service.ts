@@ -42,7 +42,7 @@ export class ApiService<TModel> implements IApiService<TModel> {
     );
   }
 
-  update(id: number, model: TModel): Observable<TModel> {
+  update(id: string, model: TModel): Observable<TModel> {
     return this.http.put<TModel>(
       `${this.apiServiceUrl}/${id}`,
       { body: model },

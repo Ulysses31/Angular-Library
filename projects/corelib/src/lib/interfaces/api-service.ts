@@ -38,11 +38,11 @@ export interface IApiService<TModel> {
 
   /**
    * @description Update existing T
-   * @param id number
+   * @param id string
    * @param model T
    * @returns Observable<T>
    */
-  update(id: number, model: TModel): Observable<TModel>;
+  update(id: string, model: TModel): Observable<TModel>;
 
   /**
    * @description Delete existing T

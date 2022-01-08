@@ -3,19 +3,33 @@
     <div class="p-fluid">
       <div class="field col-6">
         <label for="title" class="sr-only">Title</label>
-        <ng-input-text
-          [name]="'title'"
-          [nmodel]="VM.model && $any(VM.model.title)"
-        >
-        </ng-input-text>
+        <span class="p-input-icon-right">
+          <i
+            class="pi pi-spin pi-spinner"
+            [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
+          >
+          </i>
+          <input
+            id="title"
+            type="text"
+            pInputText
+            class="p-inputtext p-component"
+            name="title"
+            [(ngModel)]="VM.model && VM.model.title"
+          />
+        </span>
       </div>
       <div class="field col-6">
         <label for="body" class="sr-only">Body</label>
-        <ng-input-text-area
-          [name]="'body'"
-          [nmodel]="VM.model && $any(VM.model.body)"
+        <textarea
+          id="body"
+          pInputTextarea
+          rows="5"
+          class="p-inputtext p-component noSize"
+          name="body"
+          [(ngModel)]="VM.model && VM.model.body"
         >
-        </ng-input-text-area>
+        </textarea>
       </div>
     </div>
   </form>
