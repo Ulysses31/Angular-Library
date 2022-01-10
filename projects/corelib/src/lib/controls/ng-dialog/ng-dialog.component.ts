@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DialogMessageEntity } from '../../models/dialog-message-entity';
 
 @Component({
@@ -20,11 +21,10 @@ import { DialogMessageEntity } from '../../models/dialog-message-entity';
       <ng-template pTemplate="footer">
         <p-button
           icon="pi pi-check"
-          (click)="dialogMessageContent.display = false"
+          (click)="commandBtn()"
           label="Ok"
           class="p-button-text"
         ></p-button>
-        <!-- <p-button icon="pi pi-times" (click)="displayModal=false" label="No"></p-button> -->
       </ng-template>
     </p-dialog>
   `,
@@ -35,9 +35,23 @@ export class NgDialogComponent implements OnInit {
     display: false,
     title: '',
     content: '',
+    hasBtnUrl: false
   };
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
+
+  commandBtn(): void {
+    this.dialogMessageContent.display = false;
+    this.route.queryParams.subscribe({
+      next: (data) => this.dialogMessageContent.btnUrl = data['backUrl']
+    });
+    if(this.dialogMessageContent.hasBtnUrl) {
+      this.router.navigate([this.dialogMessageContent.btnUrl]);
+    };
+  }
 }

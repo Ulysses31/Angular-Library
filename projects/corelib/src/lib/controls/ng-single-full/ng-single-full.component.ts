@@ -36,6 +36,7 @@ import { NgSingleViewModelService } from '../../services/viewmodel/single-viewmo
       </div>
       <ng-full-spinner [isBusy]="VM.isBusy"></ng-full-spinner>
       <ng-dialog [dialogMessageContent]="VM.dialogMessageContent"></ng-dialog>
+      <ng-confirm-dialog></ng-confirm-dialog>
     </ng-container>
   `,
   styleUrls: ['./ng-single-full.component.css'],

@@ -1,33 +1,49 @@
 <ng-single-full-entity [VM]="VM">
-  <form #frm="ngForm">
+  <form #frm="ngForm" (change)="formStatus(frm)">
     <div class="p-fluid">
       <div class="field col-6">
-        <label for="title" class="sr-only">Title</label>
+        <label for="title" class="sr-only">Title *</label>
         <span class="p-input-icon-right">
           <i
             class="pi pi-spin pi-spinner"
             [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
           >
           </i>
+          <span [hidden]="titleField.valid || titleField.untouched">
+            * is required
+          </span>
           <input
-            id="title"
             type="text"
+            id="title"
+            name="title"
             pInputText
             class="p-inputtext p-component"
-            name="title"
+            [ngClass]="{ 'inValid' : !titleField.valid }"
             [(ngModel)]="VM.model && VM.model.title"
+            (keyup)="formStatus(frm)"
+            (change)="formStatus(frm)"
+            #titleField="ngModel"
+            required
           />
         </span>
       </div>
       <div class="field col-6">
-        <label for="body" class="sr-only">Body</label>
+        <label for="body" class="sr-only">Body *</label>
+        <br/><span [hidden]="bodyField.valid || bodyField.untouched">
+          * is required
+        </span>
         <textarea
           id="body"
+          name="body"
           pInputTextarea
           rows="5"
           class="p-inputtext p-component noSize"
-          name="body"
+          [ngClass]="{ 'inValid' : !bodyField.valid }"
           [(ngModel)]="VM.model && VM.model.body"
+          (keyup)="formStatus(frm)"
+          (change)="formStatus(frm)"
+          #bodyField="ngModel"
+          required
         >
         </textarea>
       </div>

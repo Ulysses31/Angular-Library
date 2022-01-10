@@ -46,8 +46,8 @@ export interface IApiService<TModel> {
 
   /**
    * @description Delete existing T
-   * @param id number
-   * @returns Observable<T>
+   * @param id string
+   * @returns Observable<void>
    */
-  delete(id: number): Observable<TModel>;
+  delete(id: string): Observable<void>;
 }

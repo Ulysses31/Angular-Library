@@ -6,8 +6,8 @@ import {
   Injector,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Message } from 'primeng/api';
-import { Observable, tap, switchMap, of, iif, finalize } from 'rxjs';
+import { ConfirmationService, Message } from 'primeng/api';
+import { Observable, switchMap, of } from 'rxjs';
 import { NgHeaderAction } from '../../interfaces/ngHeaderAction';
 import { NgBaseEntity } from '../../models/base-entity';
 import { DialogMessageEntity } from '../../models/dialog-message-entity';
@@ -28,24 +28,31 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
     display: false,
     title: 'Message',
     content: '',
+    hasBtnUrl: false,
   };
 
   abstract getById(id: string): Observable<TModel>;
 
   protected route: ActivatedRoute;
   protected router: Router;
+  protected confirmationService: ConfirmationService;
 
   protected abstract resetCb: (item: TModel) => Observable<TModel>;
   protected abstract postCb: (item: TModel) => Observable<TModel>;
   protected abstract putCb: (id: string, item: TModel) => Observable<TModel>;
+  protected abstract deleteCb: (id: string) => Observable<void>;
 
   constructor(public injector: Injector) {
     this.route = injector.get<ActivatedRoute>(ActivatedRoute);
     this.router = injector.get<Router>(Router);
+    this.confirmationService =
+      injector.get<ConfirmationService>(ConfirmationService);
   }
 
   ngOnInit(): void {
-    this.backUrl = decodeURIComponent(this.route.snapshot.queryParams['backUrl']);
+    this.backUrl = decodeURIComponent(
+      this.route.snapshot.queryParams['backUrl']
+    );
     this.headerActions.push(
       {
         id: 'back',
@@ -54,7 +61,7 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
         label: 'Back',
         ngClass: 'p-button-raised p-button-sm p-button-warning',
         visible: true,
-        command: () => this.router.navigate([this.backUrl])
+        command: () => this.router.navigate([this.backUrl]),
       },
       {
         id: 'new',
@@ -63,7 +70,7 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
         label: 'New',
         ngClass: 'p-button-raised p-button-sm p-button-success',
         visible: true,
-        command: () => this.performReset()
+        command: () => this.performReset(),
       },
       {
         id: 'save',
@@ -72,7 +79,16 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
         label: 'Save',
         ngClass: 'p-button-raised p-button-sm p-button-success',
         visible: true,
-        command: () => this.performSave()
+        command: () => this.performSave(),
+      },
+      {
+        id: 'delete',
+        icon: 'pi pi-trash',
+        iconPosition: 'left',
+        label: 'Delete',
+        ngClass: 'p-button-raised p-button-sm p-button-danger',
+        visible: true,
+        command: () => this.performDelete(),
       },
       {
         id: 'refresh',
@@ -103,13 +119,16 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
   ngOnDestroy(): void {}
 
   private getModel(): void {
+    const idx = this.headerActions.findIndex((item) => item.id === 'save');
     this.isBusy = true;
-    this.route.params.pipe(
-      switchMap(({ id }) => this.getById(id))).subscribe({
+    this.route.params.pipe(switchMap(({ id }) => this.getById(id))).subscribe({
       next: (data: TModel) => {
         console.log(data);
         this.isBusy = false;
         this.model = data;
+        if (this.headerActions[idx].disabled) {
+          this.headerActions[idx].disabled = false;
+        }
       },
       error: (err) => {
         this.isBusy = false;
@@ -121,33 +140,58 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
   }
 
   private performReset(): void {
-    console.log('performReset');
-    of(null).pipe(
-      switchMap(() => this.resetCb(this.model!))
-    ).subscribe({
-      next: (data: TModel) => this.model = data
-    })
+    const idx = this.headerActions.findIndex((item) => item.id === 'save');
+    of(null)
+      .pipe(switchMap(() => this.resetCb(this.model!)))
+      .subscribe({
+        next: (data: TModel) => {
+          this.model = data;
+          if (!this.headerActions[idx].disabled) {
+            this.headerActions[idx].disabled = true;
+          }
+        },
+      });
   }
 
   private performSave(): void {
-    if(this.model?.id === '0') {
+    this.isBusy = true;
+    if (this.model?.id === '0') {
       this.postCb(this.model).subscribe({
         next: () => this.handleSuccessInsert(),
-        error: (err) => console.log(err)
-      })
+        error: (err) => console.log(err),
+        complete: () => this.isBusy = false
+      });
     } else {
       this.putCb(this.model?.id!, this.model!).subscribe({
         next: () => this.handleSuccessUpdate(),
-        error: (err) => console.log(err)
-      })
+        error: (err) => console.log(err),
+        complete: () => this.isBusy = false
+      });
     }
+  }
+
+  private performDelete(): void {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to delete it?',
+      accept: () => {
+        if (this.model?.id) {
+          this.isBusy = true;
+          this.deleteCb(this.model.id).subscribe({
+            next: () => this.handleSuccessDelete(),
+            error: (err) => console.log(err),
+            complete: () => this.isBusy = false
+          });
+        }
+      },
+    });
   }
 
   private handleSuccessInsert(): void {
     this.dialogMessageContent = {
       display: true,
       title: 'Success',
-      content: 'Successfully inserted.'
+      content: 'Successfully inserted.',
+      hasBtnUrl: true,
     };
   }
 
@@ -155,7 +199,17 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
     this.dialogMessageContent = {
       display: true,
       title: 'Success',
-      content: 'Successfully updated.'
+      content: 'Successfully updated.',
+      hasBtnUrl: true,
+    };
+  }
+
+  private handleSuccessDelete(): void {
+    this.dialogMessageContent = {
+      display: true,
+      title: 'Success',
+      content: 'Successfully deleted.',
+      hasBtnUrl: true,
     };
   }
 

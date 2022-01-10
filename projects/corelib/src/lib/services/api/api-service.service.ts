@@ -50,8 +50,8 @@ export class ApiService<TModel> implements IApiService<TModel> {
     );
   }
 
-  delete(id: number): Observable<TModel> {
-    return this.http.delete<TModel>(
+  delete(id: string): Observable<void> {
+    return this.http.delete<void>(
       `${this.apiServiceUrl}/${id}`,
       this.httpOptions
     );

@@ -71,7 +71,6 @@ import { NgHeaderActionsComponent } from './controls/ng-header-actions/ng-header
 import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.component';
 import { NgFullSpinnerComponent } from './controls/ng-full-spinner/ng-full-spinner.component';
 import { NgPagedListFullComponent } from './controls/ng-paged-list-full/ng-paged-list-full.component';
-import { HttpClientModule } from '@angular/common/http';
 import { NgSingleFullEntityComponent } from './controls/ng-single-full/ng-single-full.component';
 
 @NgModule({
@@ -117,7 +116,6 @@ import { NgSingleFullEntityComponent } from './controls/ng-single-full/ng-single
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     ButtonModule,
     RippleModule,
     CalendarModule,

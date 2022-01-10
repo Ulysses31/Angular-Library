@@ -24,7 +24,8 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   dialogMessageContent: DialogMessageEntity = {
     display: false,
     title: 'Message',
-    content: ''
+    content: '',
+    hasBtnUrl: false
   };
 
   abstract search(searchModel: NgBaseSearchModel): Observable<TModel[]>;

@@ -1,18 +1,16 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { CorelibModule, NgInputTextComponent } from 'corelib';
+import { CorelibModule } from 'corelib';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    FormsModule,
-    ReactiveFormsModule,
     CommonModule,
-    CorelibModule
+    CorelibModule,
   ],
   exports: [
     FormsModule,
-    ReactiveFormsModule,
+    CommonModule,
     CorelibModule
   ]
 })
