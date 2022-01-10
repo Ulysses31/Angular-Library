@@ -7,11 +7,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class PostsViewModelService extends AppBaseListViewModelService<PostDto> {
-
-  constructor(
-    private apiService: ApiService<PostDto>,
-    private router: Router
-  ) {
+  constructor(private apiService: ApiService<PostDto>, private router: Router) {
     super();
     this.apiService.setApiServiceUrl(
       'https://jsonplaceholder.typicode.com/posts'
@@ -46,10 +42,8 @@ export class PostsViewModelService extends AppBaseListViewModelService<PostDto> 
   }
 
   editModel(selectedRow: PostDto): void {
-    console.log(selectedRow);
-    this.router.navigate(
-      ['posts/edit', selectedRow.id],
-      { queryParams: { backUrl: this.router.url } }
-    );
+    this.router.navigate(['posts/edit', selectedRow.id], {
+      queryParams: { backUrl: this.router.url },
+    });
   }
 }

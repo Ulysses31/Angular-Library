@@ -1,10 +1,11 @@
+import { CommentsFormComponent } from './comments-form/comments-form.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared.module';
 import { CommentsRoutingModule } from './comments-routing.module';
 import { CommentsComponent } from './comments.component';
 
 @NgModule({
-  declarations: [CommentsComponent],
+  declarations: [CommentsComponent, CommentsFormComponent],
   imports: [SharedModule, CommentsRoutingModule],
 })
 export class CommentsModule {}

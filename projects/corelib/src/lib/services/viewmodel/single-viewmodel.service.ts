@@ -159,13 +159,13 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
       this.postCb(this.model).subscribe({
         next: () => this.handleSuccessInsert(),
         error: (err) => console.log(err),
-        complete: () => this.isBusy = false
+        complete: () => (this.isBusy = false),
       });
     } else {
       this.putCb(this.model?.id!, this.model!).subscribe({
         next: () => this.handleSuccessUpdate(),
         error: (err) => console.log(err),
-        complete: () => this.isBusy = false
+        complete: () => (this.isBusy = false),
       });
     }
   }
@@ -179,7 +179,7 @@ export abstract class NgSingleViewModelService<TModel extends NgBaseEntity>
           this.deleteCb(this.model.id).subscribe({
             next: () => this.handleSuccessDelete(),
             error: (err) => console.log(err),
-            complete: () => this.isBusy = false
+            complete: () => (this.isBusy = false),
           });
         }
       },

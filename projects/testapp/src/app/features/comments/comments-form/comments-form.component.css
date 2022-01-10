@@ -1,0 +1,7 @@
+textarea {
+  resize: none;
+}
+
+.inValid {
+  border-left: 10px solid red;
+}

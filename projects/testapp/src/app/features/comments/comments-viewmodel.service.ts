@@ -4,10 +4,14 @@ import { AppBaseListViewModelService } from '../../core/app-base-list-viewmodel.
 import { NgBaseSearchModel } from 'projects/corelib/src/public-api';
 import { ApiService } from 'corelib';
 import { CommentDto } from '../../api/models/comment-dto';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CommentsViewModelService extends AppBaseListViewModelService<CommentDto> {
-  constructor(private apiService: ApiService<CommentDto>) {
+  constructor(
+    private apiService: ApiService<CommentDto>,
+    private router: Router
+  ) {
     super();
     this.apiService.setApiServiceUrl(
       'https://jsonplaceholder.typicode.com/comments'
@@ -42,6 +46,9 @@ export class CommentsViewModelService extends AppBaseListViewModelService<Commen
   }
 
   editModel(selectedRow: any): void {
-    console.log(selectedRow);
+    this.router.navigate(
+      ['comments/edit', selectedRow.id],
+      { queryParams: { backUrl: this.router.url } }
+    );
   }
 }
