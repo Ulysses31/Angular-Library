@@ -37,10 +37,10 @@
         </span>
       </div>
       <div class="field col-6">
-        <label for="completed" class="sr-only">Completed *</label>&nbsp;
+        <label for="completed" class="sr-only">Completed</label>&nbsp;
         <ng-input-switch
+          id="completed"
           name="completed"
-          (click)="chageState()"
           [(ngModel)]="VM.model && VM.model.completed"
         ></ng-input-switch>
       </div>

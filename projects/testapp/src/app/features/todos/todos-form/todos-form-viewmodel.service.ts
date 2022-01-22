@@ -6,7 +6,6 @@ import { AppBaseViewModelService } from '../../../core/app-base-viewmodel.servic
 
 @Injectable()
 export class TodosFormViewModelService extends AppBaseViewModelService<TodoDto> {
-  checked: boolean = false;
   protected resetCb = this.resetModel.bind(this);
   protected postCb = this.post.bind(this);
   protected putCb = this.put.bind(this);

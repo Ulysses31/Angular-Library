@@ -27,11 +27,6 @@ export class TodosFormComponent extends AppBaseComponent {
     super.ngOnDestroy();
   }
 
-  chageState(): void {
-    this.VM.checked = !this.VM.checked;
-    console.log(this.VM.checked);
-  }
-
   formStatus(frm: NgForm): void {
     const idx = this.VM.headerActions.findIndex((item) => item.id === 'save');
     this.VM.headerActions[idx].disabled = !frm.valid;
