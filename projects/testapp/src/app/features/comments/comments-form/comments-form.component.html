@@ -12,7 +12,7 @@
           <span [hidden]="nameField.valid || nameField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="name"
             name="name"
@@ -24,7 +24,16 @@
             (change)="formStatus(frm)"
             #nameField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="name"
+            name="name"
+            [(ngModel)]="VM.model && VM.model.name"
+            [isValid]="!nameField.valid"
+            #nameField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -38,7 +47,7 @@
           <span [hidden]="emailField.valid || emailField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="email"
             name="email"
@@ -50,7 +59,16 @@
             (change)="formStatus(frm)"
             #emailField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="email"
+            name="email"
+            [(ngModel)]="VM.model && VM.model.email"
+            [isValid]="!emailField.valid"
+            #emailField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -58,7 +76,7 @@
         <br /><span [hidden]="bodyField.valid || bodyField.untouched">
           * is required
         </span>
-        <textarea
+        <!-- <textarea
           id="body"
           name="body"
           pInputTextarea
@@ -71,7 +89,15 @@
           #bodyField="ngModel"
           required
         >
-        </textarea>
+        </textarea> -->
+        <ng-input-text-area
+          id="body"
+          name="body"
+          [(ngModel)]="VM.model && VM.model.body"
+          [isValid]="!bodyField.valid"
+          #bodyField="ngModel"
+          required
+        ></ng-input-text-area>
       </div>
     </div>
   </form>

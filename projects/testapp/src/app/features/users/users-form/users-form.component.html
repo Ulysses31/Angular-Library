@@ -12,7 +12,7 @@
           <span [hidden]="nameField.valid || nameField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="name"
             name="name"
@@ -24,7 +24,16 @@
             (change)="formStatus(frm)"
             #nameField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="name"
+            name="name"
+            [(ngModel)]="VM.model && VM.model.name"
+            [isValid]="!nameField.valid"
+            #nameField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -38,7 +47,7 @@
           <span [hidden]="userNameField.valid || userNameField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="username"
             name="username"
@@ -50,7 +59,16 @@
             (change)="formStatus(frm)"
             #userNameField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="username"
+            name="username"
+            [(ngModel)]="VM.model && VM.model.username"
+            [isValid]="!userNameField.valid"
+            #userNameField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -64,7 +82,7 @@
           <span [hidden]="emailField.valid || emailField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="email"
             name="email"
@@ -76,7 +94,16 @@
             (change)="formStatus(frm)"
             #emailField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="email"
+            name="email"
+            [(ngModel)]="VM.model && VM.model.email"
+            [isValid]="!emailField.valid"
+            #emailField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -90,7 +117,7 @@
           <span [hidden]="phoneField.valid || phoneField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="phone"
             name="phone"
@@ -102,7 +129,16 @@
             (change)="formStatus(frm)"
             #phoneField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="phone"
+            name="phone"
+            [(ngModel)]="VM.model && VM.model.phone"
+            [isValid]="!phoneField.valid"
+            #phoneField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -116,7 +152,7 @@
           <span [hidden]="websiteField.valid || websiteField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="website"
             name="website"
@@ -128,7 +164,16 @@
             (change)="formStatus(frm)"
             #websiteField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="website"
+            name="website"
+            [(ngModel)]="VM.model && VM.model.website"
+            [isValid]="!websiteField.valid"
+            #websiteField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
     </div>

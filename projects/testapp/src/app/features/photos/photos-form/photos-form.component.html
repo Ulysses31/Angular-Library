@@ -12,7 +12,7 @@
           <span [hidden]="titleField.valid || titleField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="title"
             name="title"
@@ -24,7 +24,16 @@
             (change)="formStatus(frm)"
             #titleField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="title"
+            name="title"
+            [(ngModel)]="VM.model && VM.model.title"
+            [isValid]="!titleField.valid"
+            #titleField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -38,7 +47,7 @@
           <span [hidden]="urlField.valid || urlField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="url"
             name="url"
@@ -50,7 +59,16 @@
             (change)="formStatus(frm)"
             #urlField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="url"
+            name="url"
+            [(ngModel)]="VM.model && VM.model.url"
+            [isValid]="!urlField.valid"
+            #urlField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
       <div class="field col-6">
@@ -64,7 +82,7 @@
           <span [hidden]="thumbUrlField.valid || thumbUrlField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="thumbUrl"
             name="thumbUrl"
@@ -76,7 +94,16 @@
             (change)="formStatus(frm)"
             #thumbUrlField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="thumbUrl"
+            name="thumbUrl"
+            [(ngModel)]="VM.model && VM.model.thumbnailUrl"
+            [isValid]="!thumbUrlField.valid"
+            #thumbUrlField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
     </div>

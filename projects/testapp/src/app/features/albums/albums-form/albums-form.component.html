@@ -12,7 +12,7 @@
           <span [hidden]="titleField.valid || titleField.untouched">
             * is required
           </span>
-          <input
+          <!-- <input
             type="text"
             id="title"
             name="title"
@@ -24,7 +24,16 @@
             (change)="formStatus(frm)"
             #titleField="ngModel"
             required
-          />
+          /> -->
+          <ng-input-text
+            id="title"
+            name="title"
+            [(ngModel)]="VM.model && VM.model.title"
+            [isValid]="!titleField.valid"
+            #titleField="ngModel"
+            required
+          >
+          </ng-input-text>
         </span>
       </div>
     </div>
