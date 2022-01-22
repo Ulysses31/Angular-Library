@@ -4,10 +4,14 @@ import { AppBaseListViewModelService } from '../../core/app-base-list-viewmodel.
 import { NgBaseSearchModel } from 'projects/corelib/src/public-api';
 import { ApiService } from 'corelib';
 import { PhotoDto } from '../../api/models/photo-dto';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class PhotosViewModelService extends AppBaseListViewModelService<PhotoDto> {
-  constructor(private apiService: ApiService<PhotoDto>) {
+  constructor(
+    private apiService: ApiService<PhotoDto>,
+    private router: Router
+  ) {
     super();
     this.apiService.setApiServiceUrl(
       'https://jsonplaceholder.typicode.com/photos'
@@ -42,6 +46,8 @@ export class PhotosViewModelService extends AppBaseListViewModelService<PhotoDto
   }
 
   editModel(selectedRow: any): void {
-    console.log(selectedRow);
+    this.router.navigate(['photos/edit', selectedRow.id], {
+      queryParams: { backUrl: this.router.url },
+    });
   }
 }

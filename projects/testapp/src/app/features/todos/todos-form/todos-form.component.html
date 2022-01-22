@@ -1,0 +1,40 @@
+<ng-single-full-entity [VM]="VM">
+  <form #frm="ngForm" (change)="formStatus(frm)">
+    <div class="p-fluid">
+      <div class="field col-6">
+        <label for="title" class="sr-only">Title *</label>
+        <span class="p-input-icon-right">
+          <i
+            class="pi pi-spin pi-spinner"
+            [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
+          >
+          </i>
+          <span [hidden]="titleField.valid || titleField.untouched">
+            * is required
+          </span>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            pInputText
+            class="p-inputtext p-component"
+            [ngClass]="{ inValid: !titleField.valid }"
+            [(ngModel)]="VM.model && VM.model.title"
+            (keyup)="formStatus(frm)"
+            (change)="formStatus(frm)"
+            #titleField="ngModel"
+            required
+          />
+        </span>
+      </div>
+      <div class="field col-6">
+        <label for="completed" class="sr-only">Completed *</label>&nbsp;
+        <ng-input-switch
+          name="completed"
+          (click)="chageState()"
+          [(ngModel)]="VM.model && VM.model.completed"
+        ></ng-input-switch>
+      </div>
+    </div>
+  </form>
+</ng-single-full-entity>

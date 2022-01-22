@@ -23,7 +23,7 @@ export class CommentsFormViewModelService extends AppBaseViewModelService<Commen
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.label = 'Post Form';
+    this.label = 'Comments Form';
   }
 
   override ngAfterViewInit(): void {

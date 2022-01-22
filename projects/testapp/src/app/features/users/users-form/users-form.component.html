@@ -1,0 +1,136 @@
+<ng-single-full-entity [VM]="VM">
+  <form #frm="ngForm" (change)="formStatus(frm)">
+    <div class="p-fluid">
+      <div class="field col-6">
+        <label for="name" class="sr-only">Name *</label>
+        <span class="p-input-icon-right">
+          <i
+            class="pi pi-spin pi-spinner"
+            [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
+          >
+          </i>
+          <span [hidden]="nameField.valid || nameField.untouched">
+            * is required
+          </span>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            pInputText
+            class="p-inputtext p-component"
+            [ngClass]="{ inValid: !nameField.valid }"
+            [(ngModel)]="VM.model && VM.model.name"
+            (keyup)="formStatus(frm)"
+            (change)="formStatus(frm)"
+            #nameField="ngModel"
+            required
+          />
+        </span>
+      </div>
+      <div class="field col-6">
+        <label for="username" class="sr-only">UserName *</label>
+        <span class="p-input-icon-right">
+          <i
+            class="pi pi-spin pi-spinner"
+            [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
+          >
+          </i>
+          <span [hidden]="userNameField.valid || userNameField.untouched">
+            * is required
+          </span>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            pInputText
+            class="p-inputtext p-component"
+            [ngClass]="{ inValid: !userNameField.valid }"
+            [(ngModel)]="VM.model && VM.model.username"
+            (keyup)="formStatus(frm)"
+            (change)="formStatus(frm)"
+            #userNameField="ngModel"
+            required
+          />
+        </span>
+      </div>
+      <div class="field col-6">
+        <label for="email" class="sr-only">Email *</label>
+        <span class="p-input-icon-right">
+          <i
+            class="pi pi-spin pi-spinner"
+            [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
+          >
+          </i>
+          <span [hidden]="emailField.valid || emailField.untouched">
+            * is required
+          </span>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            pInputText
+            class="p-inputtext p-component"
+            [ngClass]="{ inValid: !emailField.valid }"
+            [(ngModel)]="VM.model && VM.model.email"
+            (keyup)="formStatus(frm)"
+            (change)="formStatus(frm)"
+            #emailField="ngModel"
+            required
+          />
+        </span>
+      </div>
+      <div class="field col-6">
+        <label for="phone" class="sr-only">Phone *</label>
+        <span class="p-input-icon-right">
+          <i
+            class="pi pi-spin pi-spinner"
+            [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
+          >
+          </i>
+          <span [hidden]="phoneField.valid || phoneField.untouched">
+            * is required
+          </span>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            pInputText
+            class="p-inputtext p-component"
+            [ngClass]="{ inValid: !phoneField.valid }"
+            [(ngModel)]="VM.model && VM.model.phone"
+            (keyup)="formStatus(frm)"
+            (change)="formStatus(frm)"
+            #phoneField="ngModel"
+            required
+          />
+        </span>
+      </div>
+      <div class="field col-6">
+        <label for="website" class="sr-only">Website *</label>
+        <span class="p-input-icon-right">
+          <i
+            class="pi pi-spin pi-spinner"
+            [style]="{ display: VM.isBusy ? 'initial' : 'none' }"
+          >
+          </i>
+          <span [hidden]="websiteField.valid || websiteField.untouched">
+            * is required
+          </span>
+          <input
+            type="text"
+            id="website"
+            name="website"
+            pInputText
+            class="p-inputtext p-component"
+            [ngClass]="{ inValid: !websiteField.valid }"
+            [(ngModel)]="VM.model && VM.model.website"
+            (keyup)="formStatus(frm)"
+            (change)="formStatus(frm)"
+            #websiteField="ngModel"
+            required
+          />
+        </span>
+      </div>
+    </div>
+  </form>
+</ng-single-full-entity>

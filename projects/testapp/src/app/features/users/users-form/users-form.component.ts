@@ -1,18 +1,18 @@
-import { PostsFormViewModelService } from './posts-form-viewmodel.service';
 import { Component } from '@angular/core';
+import { AppBaseComponent } from '../../../core/app-base.component';
 import { ApiService } from 'corelib';
 import { NgForm } from 'projects/corelib/node_modules/@angular/forms/forms';
-import { AppBaseComponent } from '../../../core/app-base.component';
+import { UsersFormViewModelService } from './users-form-viewmodel.service';
 
 @Component({
-  templateUrl: './posts-form.component.html',
-  styleUrls: ['./posts-form.component.css'],
-  providers: [PostsFormViewModelService, ApiService],
+  templateUrl: './users-form.component.html',
+  styleUrls: ['./users-form.component.css'],
+  providers: [UsersFormViewModelService, ApiService],
 })
-export class PostsFormComponent extends AppBaseComponent {
-  constructor(public VM: PostsFormViewModelService) {
+export class UsersFormComponent extends AppBaseComponent {
+  constructor(public VM: UsersFormViewModelService) {
     super();
-    console.log('[OnInit PostsFormComponent]');
+    console.log('[OnInit UsersFormComponent]');
   }
 
   override ngOnInit(): void {

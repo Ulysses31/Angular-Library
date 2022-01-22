@@ -4,10 +4,14 @@ import { AppBaseListViewModelService } from '../../core/app-base-list-viewmodel.
 import { NgBaseSearchModel } from 'projects/corelib/src/public-api';
 import { ApiService } from 'corelib';
 import { UserDto } from '../../api/models/user-dto';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UsersViewModelService extends AppBaseListViewModelService<UserDto> {
-  constructor(private apiService: ApiService<UserDto>) {
+  constructor(
+    private apiService: ApiService<UserDto>,
+    private router: Router
+  ) {
     super();
     this.apiService.setApiServiceUrl(
       'https://jsonplaceholder.typicode.com/users'
@@ -42,6 +46,8 @@ export class UsersViewModelService extends AppBaseListViewModelService<UserDto> 
   }
 
   editModel(selectedRow: any): void {
-    console.log(selectedRow);
+    this.router.navigate(['users/edit', selectedRow.id], {
+      queryParams: { backUrl: this.router.url },
+    });
   }
 }

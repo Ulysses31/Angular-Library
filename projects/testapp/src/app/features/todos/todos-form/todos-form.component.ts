@@ -1,23 +1,22 @@
-import { PostsFormViewModelService } from './posts-form-viewmodel.service';
 import { Component } from '@angular/core';
+import { AppBaseComponent } from '../../../core/app-base.component';
 import { ApiService } from 'corelib';
 import { NgForm } from 'projects/corelib/node_modules/@angular/forms/forms';
-import { AppBaseComponent } from '../../../core/app-base.component';
+import { TodosFormViewModelService } from './todos-form-viewmodel.service';
 
 @Component({
-  templateUrl: './posts-form.component.html',
-  styleUrls: ['./posts-form.component.css'],
-  providers: [PostsFormViewModelService, ApiService],
+  templateUrl: './todos-form.component.html',
+  styleUrls: ['./todos-form.component.css'],
+  providers: [TodosFormViewModelService, ApiService],
 })
-export class PostsFormComponent extends AppBaseComponent {
-  constructor(public VM: PostsFormViewModelService) {
+export class TodosFormComponent extends AppBaseComponent {
+  constructor(public VM: TodosFormViewModelService) {
     super();
-    console.log('[OnInit PostsFormComponent]');
+    console.log('[OnInit TodosFormComponent]');
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-    console.log('object');
   }
 
   override ngAfterViewInit(): void {
@@ -26,6 +25,11 @@ export class PostsFormComponent extends AppBaseComponent {
 
   override ngOnDestroy(): void {
     super.ngOnDestroy();
+  }
+
+  chageState(): void {
+    this.VM.checked = !this.VM.checked;
+    console.log(this.VM.checked);
   }
 
   formStatus(frm: NgForm): void {

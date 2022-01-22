@@ -15,7 +15,12 @@ import { NgSingleViewModelService } from '../../services/viewmodel/single-viewmo
       <div class="pagedListFullContainer">
         <div class="fmain">
           <div class="header">
-            <h1>{{ VM.label }} (id: {{ VM.model && VM.model.id }})</h1>
+            <h1>
+              {{ VM.label }}
+              <span style="color: #cdcdcd">
+                (id: {{ VM.model && VM.model.id }})
+              </span>
+            </h1>
           </div>
           <div class="headerActions">
             <ng-header-actions

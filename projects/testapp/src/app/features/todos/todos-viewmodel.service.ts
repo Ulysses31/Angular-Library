@@ -4,10 +4,14 @@ import { AppBaseListViewModelService } from '../../core/app-base-list-viewmodel.
 import { NgBaseSearchModel } from 'projects/corelib/src/public-api';
 import { ApiService } from 'corelib';
 import { TodoDto } from '../../api/models/todo-dto';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TodosViewModelService extends AppBaseListViewModelService<TodoDto> {
-  constructor(private apiService: ApiService<TodoDto>) {
+  constructor(
+    private apiService: ApiService<TodoDto>,
+    private router: Router
+  ) {
     super();
     this.apiService.setApiServiceUrl(
       'https://jsonplaceholder.typicode.com/todos'
@@ -42,6 +46,8 @@ export class TodosViewModelService extends AppBaseListViewModelService<TodoDto> 
   }
 
   editModel(selectedRow: any): void {
-    console.log(selectedRow);
+    this.router.navigate(['todos/edit', selectedRow.id], {
+      queryParams: { backUrl: this.router.url },
+    });
   }
 }

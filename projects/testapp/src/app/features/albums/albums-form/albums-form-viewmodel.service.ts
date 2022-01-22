@@ -23,7 +23,7 @@ export class AlbumsFormViewModelService extends AppBaseViewModelService<AlbumDto
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.label = 'Post Form';
+    this.label = 'Albums Form';
   }
 
   override ngAfterViewInit(): void {

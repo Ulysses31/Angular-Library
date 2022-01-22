@@ -1,29 +1,29 @@
 import { Injectable, Injector } from '@angular/core';
 import { ApiService } from 'corelib';
 import { Observable, of } from 'rxjs';
-import { PostDto } from '../../../api/models/post-dto';
+import { UserDto } from '../../../api/models/user-dto';
 import { AppBaseViewModelService } from '../../../core/app-base-viewmodel.service';
 
 @Injectable()
-export class PostsFormViewModelService extends AppBaseViewModelService<PostDto> {
+export class UsersFormViewModelService extends AppBaseViewModelService<UserDto> {
   protected resetCb = this.resetModel.bind(this);
-  protected postCb = this.Post.bind(this);
+  protected postCb = this.post.bind(this);
   protected putCb = this.put.bind(this);
   protected deleteCb = this.delete.bind(this);
 
   constructor(
     public override injector: Injector,
-    private apiService: ApiService<PostDto>
+    private apiService: ApiService<UserDto>
   ) {
     super(injector);
     this.apiService.setApiServiceUrl(
-      'https://jsonplaceholder.typicode.com/posts'
+      'https://jsonplaceholder.typicode.com/Users'
     );
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.label = 'Post Form';
+    this.label = 'Users Form';
   }
 
   override ngAfterViewInit(): void {
@@ -34,34 +34,38 @@ export class PostsFormViewModelService extends AppBaseViewModelService<PostDto> 
     super.ngOnDestroy();
   }
 
-  getById(id: string): Observable<PostDto> {
+  getById(id: string): Observable<UserDto> {
     console.log(
-      `Posts Form viewmodel getById called...fetching ${this.apiService.getApiServiceUrl()}`
+      `Users Form viewmodel getById called...fetching ${this.apiService.getApiServiceUrl()}`
     );
     return this.apiService.getById(id);
   }
 
-  Post(item: PostDto): Observable<PostDto> {
-    console.log('PostCb from PostsFormViewModelService');
+  post(item: UserDto): Observable<UserDto> {
+    console.log('postCb from UsersFormViewModelService');
     return this.apiService.insert(item);
   }
 
-  put(id: string, item: PostDto): Observable<PostDto> {
-    console.log('putCb from PostsFormViewModelService');
+  put(id: string, item: UserDto): Observable<UserDto> {
+    console.log('putCb from UsersFormViewModelService');
     return this.apiService.update(id, item);
   }
 
   delete(id: string): Observable<void> {
-    console.log('deleteCb from PostsFormViewModelService');
+    console.log('deleteCb from UsersFormViewModelService');
     return this.apiService.delete(id);
   }
 
-  resetModel(item: PostDto): Observable<PostDto> {
+  resetModel(item: UserDto): Observable<UserDto> {
     item = {
       id: '0',
-      userId: 0,
-      title: '',
-      body: ''
+      name: '',
+      username: '',
+      email: '',
+      address: undefined,
+      phone: '',
+      website: '',
+      company: undefined
     };
     return of(item);
   }

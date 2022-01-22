@@ -1,7 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { CorelibModule } from 'corelib';
 import { CommonModule } from '@angular/common';
+import { CorelibModule } from 'corelib';
 
 @NgModule({
   imports: [

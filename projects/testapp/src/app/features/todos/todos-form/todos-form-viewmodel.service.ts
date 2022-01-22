@@ -1,29 +1,30 @@
 import { Injectable, Injector } from '@angular/core';
 import { ApiService } from 'corelib';
 import { Observable, of } from 'rxjs';
-import { PostDto } from '../../../api/models/post-dto';
+import { TodoDto } from '../../../api/models/todo-dto';
 import { AppBaseViewModelService } from '../../../core/app-base-viewmodel.service';
 
 @Injectable()
-export class PostsFormViewModelService extends AppBaseViewModelService<PostDto> {
+export class TodosFormViewModelService extends AppBaseViewModelService<TodoDto> {
+  checked: boolean = false;
   protected resetCb = this.resetModel.bind(this);
-  protected postCb = this.Post.bind(this);
+  protected postCb = this.post.bind(this);
   protected putCb = this.put.bind(this);
   protected deleteCb = this.delete.bind(this);
 
   constructor(
     public override injector: Injector,
-    private apiService: ApiService<PostDto>
+    private apiService: ApiService<TodoDto>
   ) {
     super(injector);
     this.apiService.setApiServiceUrl(
-      'https://jsonplaceholder.typicode.com/posts'
+      'https://jsonplaceholder.typicode.com/todos'
     );
   }
 
   override ngOnInit(): void {
     super.ngOnInit();
-    this.label = 'Post Form';
+    this.label = 'Todos Form';
   }
 
   override ngAfterViewInit(): void {
@@ -34,34 +35,34 @@ export class PostsFormViewModelService extends AppBaseViewModelService<PostDto> 
     super.ngOnDestroy();
   }
 
-  getById(id: string): Observable<PostDto> {
+  getById(id: string): Observable<TodoDto> {
     console.log(
-      `Posts Form viewmodel getById called...fetching ${this.apiService.getApiServiceUrl()}`
+      `Todos Form viewmodel getById called...fetching ${this.apiService.getApiServiceUrl()}`
     );
     return this.apiService.getById(id);
   }
 
-  Post(item: PostDto): Observable<PostDto> {
-    console.log('PostCb from PostsFormViewModelService');
+  post(item: TodoDto): Observable<TodoDto> {
+    console.log('postCb from TodosFormViewModelService');
     return this.apiService.insert(item);
   }
 
-  put(id: string, item: PostDto): Observable<PostDto> {
-    console.log('putCb from PostsFormViewModelService');
+  put(id: string, item: TodoDto): Observable<TodoDto> {
+    console.log('putCb from TodosFormViewModelService');
     return this.apiService.update(id, item);
   }
 
   delete(id: string): Observable<void> {
-    console.log('deleteCb from PostsFormViewModelService');
+    console.log('deleteCb from TodosFormViewModelService');
     return this.apiService.delete(id);
   }
 
-  resetModel(item: PostDto): Observable<PostDto> {
+  resetModel(item: TodoDto): Observable<TodoDto> {
     item = {
       id: '0',
       userId: 0,
       title: '',
-      body: ''
+      completed: false
     };
     return of(item);
   }
