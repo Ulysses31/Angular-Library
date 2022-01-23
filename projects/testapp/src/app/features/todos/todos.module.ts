@@ -1,5 +1,5 @@
 import { TodosFormComponent } from './todos-form/todos-form.component';
-import { SharedModule } from './../../shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';

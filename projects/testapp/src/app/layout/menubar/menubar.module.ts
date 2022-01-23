@@ -1,5 +1,5 @@
-import { NgModule, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
-import { SharedModule } from '../../shared.module';
+import { NgModule } from '@angular/core';
+import { SharedModule } from '../../shared/shared.module';
 import { MenuBarComponent } from './menubar.component';
 
 @NgModule({

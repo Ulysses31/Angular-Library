@@ -1,5 +1,5 @@
 import { UsersFormComponent } from './users-form/users-form.component';
-import { SharedModule } from './../../shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';

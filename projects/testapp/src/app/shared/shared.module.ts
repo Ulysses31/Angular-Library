@@ -9,8 +9,8 @@ import { CorelibModule } from 'corelib';
     CorelibModule,
   ],
   exports: [
-    FormsModule,
     CommonModule,
+    FormsModule,
     CorelibModule
   ]
 })
