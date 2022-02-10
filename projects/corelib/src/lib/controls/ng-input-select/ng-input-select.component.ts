@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ng-input-select',
+  selector: 'ng-input-select',
   template: `
     <p-selectButton
       [options]="cities"

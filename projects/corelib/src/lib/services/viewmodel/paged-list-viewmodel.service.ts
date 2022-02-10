@@ -18,6 +18,7 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   label: string | undefined;
   headerActions: NgHeaderAction[] = [];
   columnDefs: ColDef[] = [];
+  filterData: { type: string, title: string }[] = [];
   rowData: Observable<any> | undefined;
   isBusy: boolean = false;
   isShowFilters: boolean = true;
@@ -100,29 +101,23 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
         next: (data: any) => {
           this.modelStruct = data && Object.getOwnPropertyNames(data[0]);
           this.rowData = data as Observable<TModel[]>;
-          console.log(Object.getOwnPropertyNames(data[0]));
-
-         this.getTypes(data);
-
+          this.getFilterTypes(data);
         },
       });
   }
 
-  private getTypes(data: any) {
-    let tmpObj = {
-      type: '',
-      title: ''
-    }
+  private getFilterTypes(data: any) {
+    this.filterData = [];
     for (const key in data[0]) {
       if (Object.prototype.hasOwnProperty.call(data[0], key)) {
         const element = data[0][key];
-        tmpObj = {
-          type: typeof element,
-          title: key,
-        }
-        console.log(tmpObj);
+        this.filterData.push({
+          'type': typeof element,
+          'title': key,
+        });
       }
     }
+    console.log(this.filterData);
   }
 
   private userMessage(severity: string, summary: string, detail: string): void {
@@ -132,4 +127,13 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
       detail,
     };
   }
+
+  onSearchCmd(): void {
+    console.log('Search Clicked');
+  }
+
+  onClearCmd(): void {
+    console.log('Clear Clicked');
+  }
+
 }

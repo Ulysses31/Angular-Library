@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
       [iconPos]="$any(iconPosition)"
       [styleClass]="$any(ngClass)"
       [ngStyle]="{ display: visible ? 'initial' : 'none' }"
-      class="m-2"
+      class="m-2 shadow"
       [loadingIcon]="$any(loadingIcon)"
       [loading]="$any(loading)"
       [disabled]="$any(disabled)"

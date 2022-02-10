@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ng-input-number',
+  selector: 'ng-input-number',
   template: ` <p-inputNumber mode="decimal"></p-inputNumber> `,
   styleUrls: ['./ng-input-number.component.css'],
 })

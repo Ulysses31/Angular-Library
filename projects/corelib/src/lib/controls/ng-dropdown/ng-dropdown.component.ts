@@ -1,27 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-ng-dropdown',
+  selector: 'ng-dropdown',
   template: `
-   <p-dropdown [options]="cities" optionLabel="name" placeholder="Select a Country"></p-dropdown>
-
+    <p-dropdown
+      [options]="dataList"
+      optionLabel="name"
+      [placeholder]="dropTitle"
+    >
+    </p-dropdown>
   `,
-  styleUrls: ['./ng-dropdown.component.css']
+  styleUrls: ['./ng-dropdown.component.css'],
 })
 export class NgDropdownComponent implements OnInit {
-  cities: { name: string, code: string }[] = [];
+  @Input() dataList: { name: string; code: string }[] = [];
+  @Input() dropTitle: string = '';
 
-  constructor() {
-    this.cities = [
-      {name: 'New York', code: 'NY'},
-      {name: 'Rome', code: 'RM'},
-      {name: 'London', code: 'LDN'},
-      {name: 'Istanbul', code: 'IST'},
-      {name: 'Paris', code: 'PRS'}
-    ];
-  }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
