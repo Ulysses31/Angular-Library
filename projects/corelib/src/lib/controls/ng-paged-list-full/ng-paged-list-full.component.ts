@@ -33,6 +33,7 @@ import { GridApi } from 'ag-grid-community';
           <pre>{{VM.model | json}}</pre>
         </div>
         <ng-messages *ngIf="VM.message" [message]="VM.message"></ng-messages>
+        <ng-search-filters [showFilters]="VM.isShowFilters"></ng-search-filters>
         <div class="gridTemplate">
           <p-toolbar class="shadow">
             <ag-paged-list

@@ -52,3 +52,4 @@ export * from './lib/controls/ng-header-actions/ng-header-actions.component';
 export * from './lib/controls/ng-full-spinner/ng-full-spinner.component';
 export * from './lib/controls/ng-paged-list-full/ng-paged-list-full.component';
 export * from './lib/controls/ng-single-full/ng-single-full.component';
+export * from './lib/controls/ng-search-filters/ng-search-filters.component';

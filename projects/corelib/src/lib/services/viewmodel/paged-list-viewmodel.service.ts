@@ -20,6 +20,7 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
   columnDefs: ColDef[] = [];
   rowData: Observable<any> | undefined;
   isBusy: boolean = false;
+  isShowFilters: boolean = true;
   toggleModelPre: boolean = false;
   dialogMessageContent: DialogMessageEntity = {
     display: false,
@@ -99,8 +100,29 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
         next: (data: any) => {
           this.modelStruct = data && Object.getOwnPropertyNames(data[0]);
           this.rowData = data as Observable<TModel[]>;
+          console.log(Object.getOwnPropertyNames(data[0]));
+
+         this.getTypes(data);
+
         },
       });
+  }
+
+  private getTypes(data: any) {
+    let tmpObj = {
+      type: '',
+      title: ''
+    }
+    for (const key in data[0]) {
+      if (Object.prototype.hasOwnProperty.call(data[0], key)) {
+        const element = data[0][key];
+        tmpObj = {
+          type: typeof element,
+          title: key,
+        }
+        console.log(tmpObj);
+      }
+    }
   }
 
   private userMessage(severity: string, summary: string, detail: string): void {

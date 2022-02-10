@@ -72,6 +72,7 @@ import { AgPagedListComponent } from './controls/ag-paged-list/ag-paged-list.com
 import { NgFullSpinnerComponent } from './controls/ng-full-spinner/ng-full-spinner.component';
 import { NgPagedListFullComponent } from './controls/ng-paged-list-full/ng-paged-list-full.component';
 import { NgSingleFullEntityComponent } from './controls/ng-single-full/ng-single-full.component';
+import { NgSearchFiltersComponent } from './controls/ng-search-filters/ng-search-filters.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { NgSingleFullEntityComponent } from './controls/ng-single-full/ng-single
     AgPagedListComponent,
     NgFullSpinnerComponent,
     NgPagedListFullComponent,
-    NgSingleFullEntityComponent
+    NgSingleFullEntityComponent,
+    NgSearchFiltersComponent
   ],
   imports: [
     CommonModule,
@@ -187,7 +189,8 @@ import { NgSingleFullEntityComponent } from './controls/ng-single-full/ng-single
     AgPagedListComponent,
     NgFullSpinnerComponent,
     NgPagedListFullComponent,
-    NgSingleFullEntityComponent
+    NgSingleFullEntityComponent,
+    NgSearchFiltersComponent
   ],
   providers: [
     ConfirmationService,
