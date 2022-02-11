@@ -1,3 +1,4 @@
+import { FilterDropDownData } from './../../models/filter-dropdown-data';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -13,20 +14,49 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
                 <div style="display: flex; flex-direction: column">
                   <label>{{item.title | uppercase}}</label>
                   <div style="display: flex;">
-                    <ng-dropdown [dataList]="data" [dropTitle]="title"></ng-dropdown>
-                    <ng-input-text *ngIf="item.type === 'string'"></ng-input-text>
-                    <ng-input-number *ngIf="item.type === 'number'"></ng-input-number>
+                    <ng-dropdown
+                      name="{'drop-' + item.title}"
+                      [dataList]="data"
+                      [dropTitle]="title"
+                      [optionLabel]="'name'"
+                      [optionValue]="'code'"
+                      [(ngModel)]="item.op"
+                    ></ng-dropdown>
+                    <ng-input-text
+                      *ngIf="item.type === 'string'"
+                      [name]="item.title"
+                      [(ngModel)]="item.value">
+                    </ng-input-text>
+                    <ng-input-number
+                      *ngIf="item.type === 'number'"
+                      [name]="item.title"
+                      [(ngModel)]="item.value">
+                    </ng-input-number>
+                    <ng-calendar
+                      *ngIf="item.type === 'date'"
+                      [name]="item.title"
+                      [(ngModel)]="item.value">
+                    </ng-calendar>
+                    &nbsp;
+                    <ng-checkbox
+                      *ngIf="item.type === 'boolean'"
+                      [name]="item.title"
+                      [(ngModel)]="item.value"
+                    >
+                    </ng-checkbox>
                   </div>
                 </div>
               </div>
             </div>
             <hr/>
             <ng-button
+              [icon]="'pi pi-search'"
               [label]="search"
               [visible]="true"
               [command]="searchCmd"
             ></ng-button>
             <ng-button
+              [icon]="'pi pi-times'"
               [label]="clear"
               [visible]="true"
               [command]="clearCmd"
@@ -41,10 +71,15 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class NgSearchFiltersComponent implements OnInit {
   @Input() showFilters?: boolean = false || undefined;
-  @Input() filterData: { type: string, title: string }[] = [];
-  @Input() searchCmd?: () => any;
-  @Input() clearCmd?: () => any;
-  data: { name: string; code: string }[] = [];
+  @Input() filterData: {
+    type: string,
+    title: string,
+    value: '',
+    op: ''
+  }[] = [];
+  @Input() searchCmd?: () => void;
+  @Input() clearCmd?: () => void;
+  data: FilterDropDownData[] = [];
   title: string = '';
   search: string = 'Αναζήτηση';
   clear: string = 'Εκκαθάριση';

@@ -34,7 +34,7 @@ import { GridApi } from 'ag-grid-community';
         </div>
         <ng-messages *ngIf="VM.message" [message]="VM.message"></ng-messages>
         <ng-search-filters
-          [showFilters]="VM.isShowFilters"
+          [showFilters]="showFilters"
           [filterData]="VM.filterData"
           [searchCmd]="VM.onSearchCmd"
           [clearCmd]="VM.onClearCmd"
@@ -59,6 +59,7 @@ export class NgPagedListFullComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
   @Input() VM?: NgPagedListViewModelService<NgBaseEntity>;
+  @Input() showFilters: boolean = false;
   @ViewChild('agGrid') grid!: AgGridAngular;
   gridApi!: GridApi;
 

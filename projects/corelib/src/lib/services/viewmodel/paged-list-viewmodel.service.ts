@@ -1,6 +1,6 @@
 import { NgHeaderAction } from './../../interfaces/ngHeaderAction';
 import { AfterViewInit, Directive, OnDestroy, OnInit } from '@angular/core';
-import { from, Observable, switchMap, tap } from 'rxjs';
+import { from, map, Observable, switchMap, tap } from 'rxjs';
 import { NgBaseEntity } from '../../models/base-entity';
 import { NgBaseSearchModel } from '../../models/base-search-model';
 import { Message } from 'primeng/api';
@@ -13,15 +13,20 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
 {
   model?: TModel[] = [];
   selectedModel?: TModel | undefined;
+  searchModel: NgBaseSearchModel | undefined;
   modelStruct?: string[] = [];
   message: Message | undefined;
   label: string | undefined;
   headerActions: NgHeaderAction[] = [];
   columnDefs: ColDef[] = [];
-  filterData: { type: string, title: string }[] = [];
-  rowData: Observable<any> | undefined;
+  filterData: {
+    type: string,
+    title: string,
+    value: '',
+    op: ''
+  }[] = [];
+  rowData?: Observable<any>;
   isBusy: boolean = false;
-  isShowFilters: boolean = true;
   toggleModelPre: boolean = false;
   dialogMessageContent: DialogMessageEntity = {
     display: false,
@@ -67,7 +72,16 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
 
   private gridInit(): void {
     this.isBusy = true;
-    this.search({})
+
+    this.searchModel = {
+      'page': 1,
+      'pageSize': 50,
+      'applyRowCount': true,
+      'filters': '',
+      'sorts': ''
+    };
+
+    this.search(this.searchModel)
       .subscribe({
         next: (data: TModel[]) => {
           this.model = data;
@@ -114,10 +128,11 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
         this.filterData.push({
           'type': typeof element,
           'title': key,
+          'value': '',
+          'op': ''
         });
       }
     }
-    console.log(this.filterData);
   }
 
   private userMessage(severity: string, summary: string, detail: string): void {
@@ -128,12 +143,18 @@ export abstract class NgPagedListViewModelService<TModel extends NgBaseEntity>
     };
   }
 
-  onSearchCmd(): void {
+  onSearchCmd = () => {
     console.log('Search Clicked');
+    console.log(this.filterData);
   }
 
-  onClearCmd(): void {
-    console.log('Clear Clicked');
+  onClearCmd = () => {
+    from(this.filterData).pipe(
+      map((data) => {
+        data.value = '',
+        data.op = ''
+      })
+    ).subscribe();
   }
 
 }
